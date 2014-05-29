@@ -1,13 +1,23 @@
 {
   "name": "mss",
   "version": "0.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "MSS",
+  "private": true,
+  "author": "Mikhail Garbuzov <madmxg@gmail.com>",
   "scripts": {
+    "start": "node ./app/bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Mikhail Garbuzov <madmxg@gmail.com>",
   "license": "ISC",
+  "dependencies": {
+    "express": "~4",
+    "static-favicon": "~1.0.0",
+    "morgan": "~1.0.0",
+    "cookie-parser": "~1.0.1",
+    "body-parser": "~1.0.0",
+    "debug": "~0.7.4",
+    "jade": "~1.3.0"
+  },
   "devDependencies": {
     "gulp": "^3.6.2",
     "gulp-changed": "^0.3.0",

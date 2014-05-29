@@ -10,7 +10,7 @@ var paths = {
   publicjs : ['./public/src/**/*.coffee']
 };
 
-gulp.task('default', ['coffee', 'less', 'publicjs', 'watch']);
+gulp.task('default', ['coffee', 'less', 'publicjs'/*, 'watch'*/]);
 
 gulp.task('coffee', function() {
   return gulp.src(paths.coffee)
