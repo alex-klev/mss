@@ -10,7 +10,7 @@ var paths = {
   publicjs : ['./public/src/**/*.coffee']
 };
 
-gulp.task('default', ['coffee', 'less', 'publicjs'/*, 'watch'*/]);
+gulp.task('default', ['coffee', 'less', 'publicjs', 'watch']);
 
 gulp.task('coffee', function() {
   return gulp.src(paths.coffee)
@@ -20,7 +20,7 @@ gulp.task('coffee', function() {
 
 gulp.task('less', function () {
   return gulp.src(paths.less)
-    .pipe(less({paths: [path.join(__dirname, 'less', 'includes')]}).on('error', gutil.log))
+    .pipe(less({paths: [path.join(__dirname, 'less', 'includes')], compress: false}).on('error', gutil.log))
     .pipe(gulp.dest('./public/css'));
 });
 
@@ -35,3 +35,5 @@ gulp.task('watch', function() {
   gulp.watch(paths.less, ['less']);
   gulp.watch(paths.publicjs, ['publicjs']);
 });
+
+gulp.task('build', ['coffee', 'less', 'publicjs']);

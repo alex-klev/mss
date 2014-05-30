@@ -1,11 +1,13 @@
-var express, router;
+var express, mongoose, router;
+
+mongoose = require('mongoose');
 
 express = require('express');
 
 router = express.Router();
 
 router.get('/', function(req, res) {
-  return res.render('index', {
+  return res.render('users/index', {
     title: 'Express'
   });
 });

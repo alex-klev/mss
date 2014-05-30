@@ -1,0 +1,62 @@
+doctype html
+html(lang='ru')
+  head
+    include includes/head
+  body
+    .main-page
+      nav.navigation(role='navigation')
+        .navigation-inner
+          .navigation-container
+            .navigation-header
+              a.navigation-brand(href='/') МСС
+              .intro
+                | mosstroyservice.ru
+                br
+                | МосСтройСервис
+              button.navigation-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+                span.sr-only Toggle navigation
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+            #bs-example-navbar-collapse-1.navigation-collapse
+              .menu-with-slider
+                ul.menu
+                  if settings.pageUrl === '/'
+                    each menu in settings.menu
+                      li(class=(menu.href === '/') ? 'active' : '')
+                        a(href=menu.href)= menu.title
+                  else
+                    each menu in settings.menu
+                      li(class=(new RegExp('^' + settings.pageUrl, 'gi').test(menu.href)) ? 'active' : '')
+                        a(href=menu.href)= menu.title
+
+                  li.signup
+                    a(href='#') Sign Up
+                  li.login
+                    a(href='#') Login
+                .menu-slider
+                  div
+      div.learn-more
+        .wide-row.header
+          block content
+      footer.wide-row
+        .container
+          .row
+            .col-xs-2
+              a.brand(href='/', target='_blank') Company
+            .col-xs-10
+              ul
+                li
+                  | ©2014 Company, Inc.
+                li
+                  a(href='#') Информация
+                li
+                  a(href='#') Условия
+                li
+                  a(href='#') Поддержка
+                li
+                  a(href='#') Блог
+                li
+                  a(mailto='#') Контакты
+                li
+                  | +7 (999) 876-54-32

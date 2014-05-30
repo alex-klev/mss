@@ -1,0 +1,12 @@
+extends ./layout
+
+block content
+  if posts && posts.length
+    .container.posts
+      each post in posts
+        .post
+          h1
+            a(href='/post/' + 'chpu-string_' + post['_id'] + '/')=post.title
+          .content!= post.html
+  else
+    h3 Нет статей

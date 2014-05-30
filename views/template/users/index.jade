@@ -1,0 +1,70 @@
+extends ./layout
+
+block content
+  .container
+    h1
+      span.mongodb-logo Заголовок главной страницы
+  .wide-row.section-nav
+    .btn-group.btn-group-sm
+      button.test(type='button') Инфо1
+      button.btn.btn-default(type='button') Инфо2
+      button.btn.btn-default(type='button') Инфо3
+  .sections
+    .features
+      .wide-row.made-easy.intro
+        .container
+          .row
+            .col-md-6
+              h2 Описание 2
+              p
+                | Engineered by the same team that develops MongoDB, you can rest assured that you always have a reliable backup.
+            .col-md-6
+              h2 Описание 1
+              p
+                | Engineered by the same team that develops MongoDB, you can rest assured that you always have a reliable backup.
+      .wide-row.gain
+        .container
+          h2 What You Gain
+          .row
+            .col-md-4.col-sm-6
+              p
+                strong
+                  i.custom-icon-backup
+                  | Confidence in your backup strategy
+              p
+                | Engineered by the same team that develops MongoDB, you can rest assured that you always have a reliable backup.
+            .col-md-4.col-sm-6
+              p
+                strong
+                  i.custom-icon-monitoring
+                  | Visibility into your cluster
+              p
+                | Gain valuable insight into the performance on your MongoDB cluster, with dozens of charts tracking key performance indicators.
+            .col-md-4.col-sm-6
+              p
+                strong
+                  i.custom-icon-backup
+                  | Continuous backup with point-in-time recovery
+              p
+                | MMS is the only backup solution for MongoDB with point-in-time recovery of replica sets and synchronized snapshots of sharded clusters.
+            .col-md-4.col-sm-6
+              p
+                strong
+                  i.custom-icon-monitoring
+                  | Custom, metric-based alerting
+              p
+                | Be the first to know when there is a performance issue. MMS allows you set custom alert when key metrics are out of range.
+            .col-md-4.col-sm-6
+              p
+                strong
+                  i.custom-icon-backup
+                  | Fully managed backups
+              p
+                | MMS eliminates the need for custom backup scripts and storage. A dedicated team monitors the system and alerts you if problems arise.
+            .col-md-4.col-sm-6
+              p
+                strong
+                  i.custom-icon-automation
+                  | Effortless operations
+              p
+                | Single-click provisioning, management and upgrades for MongoDB with zero downtime for your application. Automation features coming soon.

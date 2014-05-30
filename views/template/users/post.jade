@@ -1,0 +1,10 @@
+extends ./layout
+
+block content
+  if post
+    .container.posts
+      .post
+        h1= post.title
+        .content!= post.html
+  else
+    h3 Нет такой статьи
