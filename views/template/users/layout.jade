@@ -9,16 +9,16 @@ html(lang='ru')
           nav.navi
             .navi-collapse
               ul.menu-top
-                if settings.pageUrl === '/'
+                if settings.activeMenu === '/'
                   each menu in settings.menu
-                    li(class=(menu.href === '/') ? 'active' : '')
+                    li(class=(menu.href === '/') ? 'menu-active' : '')
                       a(href=menu.href)= menu.title
                 else
                   each menu in settings.menu
-                    li(class=(new RegExp('^' + settings.pageUrl, 'gi').test(menu.href)) ? 'active' : '')
+                    li(class=(new RegExp('^\/' + settings.activeMenu, 'gi').test(menu.href)) ? 'menu-active' : '')
                       a(href=menu.href)= menu.title
 
-                li.login.menu-active
+                li.login(class=(settings.activeMenu === 'login') ? 'menu-active' : '')
                   a(href='/login/') Вход
               .menu-slider
                 div
