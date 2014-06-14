@@ -1,4 +1,6 @@
-var Menu, app, bodyParser, connect, cookieParser, debug, express, favicon, logger, mongoose, path, routes, users;
+var Menu, app, bodyParser, connect, cookieParser, debug, express, favicon, fs, logger, methodOverride, modelsPath, mongoose, path;
+
+methodOverride = require('method-override');
 
 cookieParser = require('cookie-parser');
 
@@ -16,9 +18,7 @@ path = require('path');
 
 debug = require('debug')('app');
 
-routes = require('./controllers/index');
-
-users = require('./controllers/users');
+fs = require('fs');
 
 app = express();
 
@@ -33,6 +33,8 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded());
+
+app.use(methodOverride('_method'));
 
 app.use(cookieParser());
 
@@ -60,12 +62,17 @@ mongoose.connection.on('disconnected', function() {
   return connect();
 });
 
-require('./models/menu')();
+modelsPath = path.join(__dirname, './models');
+
+fs.readdirSync(modelsPath).forEach(function(file) {
+  if (~file.indexOf('.js')) {
+    return require(modelsPath + '/' + file);
+  }
+});
 
 Menu = mongoose.model('Menu');
 
 app.use(function(req, res, next) {
-  console.log(app.get('menu'));
   if (!app.get('menu')) {
     return Menu.find({}).exec(function(err, menu) {
       var gallary, main, post, price, remont;
@@ -113,9 +120,7 @@ app.use(function(req, res, next) {
   }
 });
 
-app.use('/', routes);
-
-app.use('/users', users);
+require('./controllers')(app);
 
 app.use(function(req, res, next) {
   var err;
@@ -143,7 +148,3 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
-
-/*
-//# sourceMappingURL=app.js.map
-*/

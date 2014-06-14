@@ -1,14 +1,13 @@
-cookieParser = require 'cookie-parser'
-bodyParser   = require 'body-parser'
-mongoose     = require 'mongoose'
-favicon      = require 'static-favicon'
-express      = require 'express'
-logger       = require 'morgan'
-path         = require 'path'
-debug        = require('debug')('app')
-
-routes = require './controllers/index'
-users  = require './controllers/users'
+methodOverride = require 'method-override'
+cookieParser   = require 'cookie-parser'
+bodyParser     = require 'body-parser'
+mongoose       = require 'mongoose'
+favicon        = require 'static-favicon'
+express        = require 'express'
+logger         = require 'morgan'
+path           = require 'path'
+debug          = require('debug')('app')
+fs             = require 'fs'
 
 app = express()
 
@@ -18,6 +17,7 @@ app.use favicon()
 app.use logger('dev')
 app.use bodyParser.json()
 app.use bodyParser.urlencoded()
+app.use methodOverride('_method')
 app.use cookieParser()
 app.use express.static(path.join(__dirname, './../public'))
 
@@ -26,12 +26,15 @@ connect = ()->
   mongoose.connect 'mongodb://localhost/mss', options
 connect()
 mongoose.connection.on 'error', (err)-> debug err
-mongoose.connection.on 'disconnected', ()-> connect()
+mongoose.connection.on 'disconnected', -> connect()
 
-require('./models/menu')();
+# Bootstrap models
+modelsPath = path.join(__dirname, './models')
+fs.readdirSync(modelsPath).forEach (file)->
+  require(modelsPath + '/' + file) if ~file.indexOf '.js'
+
 Menu = mongoose.model 'Menu'
 app.use (req, res, next)->
-  console.log app.get('menu')
   if !app.get('menu')
     Menu.find({}).exec((err, menu)->
       if err
@@ -52,8 +55,9 @@ app.use (req, res, next)->
   else
     next()
 
-app.use '/', routes
-app.use '/users', users
+
+# Bootstrap routes
+require('./controllers') app
 
 #/ catch 404 and forward to error handler
 app.use (req, res, next) ->

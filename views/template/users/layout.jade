@@ -4,43 +4,34 @@ html(lang='ru')
     include includes/head
   body
     .main-page
-      nav.navigation(role='navigation')
-        .navigation-inner
-          .navigation-container
-            .navigation-header
-              a.navigation-brand(href='/') МСС
-              .intro
-                | mosstroyservice.ru
-                br
-                | МосСтройСервис
-              button.navigation-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
-                span.sr-only Toggle navigation
-                span.icon-bar
-                span.icon-bar
-                span.icon-bar
-            #bs-example-navbar-collapse-1.navigation-collapse
-              .menu-with-slider
-                ul.menu
-                  if settings.pageUrl === '/'
-                    each menu in settings.menu
-                      li(class=(menu.href === '/') ? 'active' : '')
-                        a(href=menu.href)= menu.title
-                  else
-                    each menu in settings.menu
-                      li(class=(new RegExp('^' + settings.pageUrl, 'gi').test(menu.href)) ? 'active' : '')
-                        a(href=menu.href)= menu.title
+      .menu-wrapper
+        .menu-container
+          nav.navi
+            .navi-collapse
+              ul.menu-top
+                if settings.pageUrl === '/'
+                  each menu in settings.menu
+                    li(class=(menu.href === '/') ? 'active' : '')
+                      a(href=menu.href)= menu.title
+                else
+                  each menu in settings.menu
+                    li(class=(new RegExp('^' + settings.pageUrl, 'gi').test(menu.href)) ? 'active' : '')
+                      a(href=menu.href)= menu.title
 
-                  li.signup
-                    a(href='#') Sign Up
-                  li.login
-                    a(href='#') Login
-                .menu-slider
-                  div
-      div.learn-more
-        .wide-row.header
-          block content
-      footer.wide-row
-        .container
+                li.signup.menu-active
+                  a(href='#') Sign Up
+                li.login
+                  a(href='#') Login
+              .menu-slider
+                div
+      .content-wrapper
+        .content-container
+          .blog-header
+            div.learn-more
+              .wide-row.header
+                block content
+      footer.footer-wrapper
+        .footer-container
           .row
             .col-xs-2
               a.brand(href='/', target='_blank') Company

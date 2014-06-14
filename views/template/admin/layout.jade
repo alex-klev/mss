@@ -2,15 +2,10 @@ doctype html
 html(lang='ru')
   head
     title Title
-    link(href='/css/vendor/bootstrap/bootstrap.css', rel='stylesheet', type='text/css')
-    link(href='/vendor/floala/css/font-awesome.min.css', rel='stylesheet', type='text/css')
-    link(href='/vendor/floala/css/froala_editor.min.css', rel='stylesheet', type='text/css')
-    script(src='http://code.jquery.com/jquery-1.10.2.js')
-    script(src='/vendor/floala/js/froala_editor.min.js')
-    script(src='/vendor/floala/js/langs/ru.js')
-    script(src='/index.js')
   body
-    h1
-      a(href='/') Главная
-      a(href='/admin') Админка
+    a(href='/') Главная
+    p
+    a(href='/admin') Админка
+    p
+    a(href='/admin/posts') Посты
     block content

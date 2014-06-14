@@ -27,82 +27,117 @@
   .navbar;
   .navbar-static-top;
   .navbar-default;
+
   position: relative;
   z-index: 100;
   margin-bottom: 0;
   padding-left: 36px;
   padding-right: 36px;
+
   .navigation-inner {
-    .navigation-container {
-      .container;
-      .navigation-header{
-        .navbar-header;
-        a.navigation-brand {
-          .navbar-brand;
-          margin: 5px 0;
-          background-size: 100px 100px;
-          width: 100px;
-          height: 100px;
-        }
-        .intro {
-          .pull-left;
-          color: #a09f9e;
-          margin: 18px 0;
-          padding-left: 12px;
-          font-size: 15px;
-          line-height: 17px;
-          .hidden-sm;
-        }
-        .navigation-toggle {
-          .navbar-toggle
-        }
+    .container;
+
+    .logo {
+      float: left;
+      margin-top: 23px;
+      .intro {
+        width: 200px;
       }
-      .navigation-collapse {
-        .collapse;
-        .navbar-collapse;
-        .menu-with-slider {
-          .navbar-right
-          ul.menu {
-            .nav;
-            .navbar-nav;
-            position: relative;
-            display: inline;
-            font-size: 38px;
-            margin-top: 0px;
-            margin-right: 0;
-            font-family: MovieLettersCyrillic, Arial, Helvetica, sans-serif;
-            letter-spacing: 1px;
-            li {
-              text-transform: uppercase;
-              margin-right: 1px;
-              a {
-                padding: 70px 3px 5px;
-                text-decoration: none;
-                background: url(/images/hover.png) 0 -440px repeat-x;
-                transition: background-position .7s, color 1s;
-                &:hover {
-                  background-position: 0 0;
-                  color: #ffffff;
-                }
-              }
-              .active a {
+    }
+
+    .mini-nav {
+      .navbar-header;
+
+      .mini-nav-toggle {
+        .navbar-toggle;
+        display: none;
+      }
+    }
+
+    .menu-wrapper {
+      .navbar-collapse;
+
+      .menu-with-slider {
+        
+        ul.menu {
+          .nav;
+          .navbar-nav;
+
+          float: right;
+          position: relative;
+          display: inline;
+          font-size: 38px;
+          margin-top: 0px;
+          margin-right: 0;
+          font-family: MovieLettersCyrillic, Arial, Helvetica, sans-serif;
+          letter-spacing: 1px;
+          li {
+            text-transform: uppercase;
+            margin-right: 1px;
+            a {
+              padding: 70px 3px 5px;
+              text-decoration: none;
+              background: url(/images/hover.png) 0 -440px repeat-x;
+              transition: background-position .7s, color 1s;
+              &:hover {
                 background-position: 0 0;
                 color: #ffffff;
               }
             }
-          }
-          .menu-slider {
-            display: block;
-            margin-top: 95px;
-            div {
-              position: relative;
-              height: 2px;
-              width: 0px;
-              background-color: yellowgreen;
+            .active a {
+              background-position: 0 0;
+              color: #ffffff;
             }
           }
         }
+        .menu-slider {
+          display: block;
+          margin-top: 95px;
+          div {
+            position: relative;
+            height: 2px;
+            width: 0px;
+            background-color: yellowgreen;
+          }
+        }
       }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+    .navigation-container {
+//      .container;
+//      .navigation-header{
+//        .navbar-header;
+//        a.navigation-brand {
+//          .navbar-brand;
+//          margin: 5px 0;
+//          background-size: 100px 100px;
+//          width: 100px;
+//          height: 100px;
+//        }
+//        .intro {
+//          .pull-left;
+//          color: #a09f9e;
+//          margin: 18px 0;
+//          padding-left: 12px;
+//          font-size: 15px;
+//          line-height: 17px;
+//          .hidden-sm;
+//        }
+//        .navigation-toggle {
+//          .navbar-toggle
+//        }
+//      }
 
     }
   }

@@ -1,8 +1,11 @@
-mongoose = require 'mongoose'
-express  = require 'express'
-router   = express.Router()
+administrator    = require './administrator'
+statics          = require './statics'
+posts            = require './posts'
 
-router.get '/', (req, res)->
-  res.render 'users/index', { title: 'Express' }
 
-module.exports = router
+module.exports = (app)->
+  app.use '/', statics
+  app.use '/posts', posts
+
+  app.use '/admin', administrator
+  return

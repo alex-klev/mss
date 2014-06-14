@@ -2,10 +2,6 @@ extends ../layout
 
 block content
   h2 Список статей
-  a(href='/admin/content/posts/new')
-    button.btn.btn-default.btn-sm(type='button')
-      span.glyphicon.glyphicon-pencil
-      | Создать
   if posts && posts.length
     table.table-bordered.table-condensed
       tr
@@ -16,7 +12,7 @@ block content
         th Date
       each post, index in posts
         tr
-          td= index
+          td: a(href='/admin/posts/' + post['_id'])= '# ' + (index + 1)
           td= post.title
           td= post.html.substr(0, 80) + '...'
           td= post.active

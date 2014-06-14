@@ -1,19 +1,13 @@
-var express, mongoose, router;
+var administrator, posts, statics;
 
-mongoose = require('mongoose');
+administrator = require('./administrator');
 
-express = require('express');
+statics = require('./statics');
 
-router = express.Router();
+posts = require('./posts');
 
-router.get('/', function(req, res) {
-  return res.render('users/index', {
-    title: 'Express'
-  });
-});
-
-module.exports = router;
-
-/*
-//# sourceMappingURL=index.js.map
-*/
+module.exports = function(app) {
+  app.use('/', statics);
+  app.use('/posts', posts);
+  app.use('/admin', administrator);
+};

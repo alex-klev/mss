@@ -1,0 +1,78 @@
+.main-page {
+  background: url(/images/bg-content.jpg) center 0 repeat;
+}
+
+.menu-container {
+  .container;
+
+  nav.navi {
+    .navbar;
+    .navbar-default;
+
+    min-height: 150px;
+    border: 0;
+    background-color: transparent;
+
+    .navi-collapse {
+      .collapse;
+      .navbar-collapse;
+
+      display: inline-block;
+      position: absolute;
+      right: 0px;
+
+      .menu-top {
+        .nav;
+        .navbar-nav;
+
+        float: right;
+        position: relative;
+        display: inline-block;
+        font-size: 38px;
+        margin-top: 0px;
+        margin-right: 0;
+        font-family: MovieLettersCyrillic, Arial, Helvetica, sans-serif;
+        letter-spacing: 1px;
+        
+        li {
+          text-transform: uppercase;
+          margin-right: 1px;
+          float: left;
+          a {
+            padding: 70px 3px 5px;
+            text-decoration: none;
+            background: url(/images/hover.png) 0 -440px repeat-x;
+            transition: background-position .7s, color 1s;
+            line-height: 20px;
+
+            &:hover {
+              background-position: 0 0;
+              color: #ffffff;
+            }
+          }
+
+          &.menu-active > a {
+            background-position: 0 0;
+            color: #ffffff;
+          }
+
+
+        }
+      }
+
+      .menu-slider {
+        position: relative;
+        margin-top: 95px;
+
+        div {
+          position: relative;
+          left: 0px;
+          height: 2px;
+          width: 0px;
+          overflow: hidden;
+          background-color: yellowgreen;
+        }
+      }
+    }
+  }
+}

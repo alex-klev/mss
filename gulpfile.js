@@ -6,15 +6,15 @@ var path    = require('path');
 
 var paths = {
   coffee   : ['./src/coffee/**/*.coffee'],
-  less     : ['./src/less/*.less'       ],
-  publicjs : ['./public/src/**/*.coffee']
+  less     : ['./src/less/style.less'       ],
+  publicjs : ['./src/coffee-cli/**/*.coffee']
 };
 
 gulp.task('default', ['coffee', 'less', 'publicjs', 'watch']);
 
 gulp.task('coffee', function() {
   return gulp.src(paths.coffee)
-    .pipe(coffee({bare: true, sourceMap: true}).on('error', gutil.log))
+    .pipe(coffee({bare: true, sourceMap: false}).on('error', gutil.log))
     .pipe(gulp.dest('./app'))
 });
 
@@ -32,7 +32,7 @@ gulp.task('publicjs', function() {
 
 gulp.task('watch', function() {
   gulp.watch(paths.coffee, ['coffee']);
-  gulp.watch(paths.less, ['less']);
+  gulp.watch('./src/less/**/*.less', ['less']);
   gulp.watch(paths.publicjs, ['publicjs']);
 });
 
