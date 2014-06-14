@@ -1,11 +1,10 @@
 doctype html
 html(lang='ru')
   head
-    title Title
+    include includes/head
   body
-    a(href='/') Главная
-    p
-    a(href='/admin') Админка
-    p
-    a(href='/admin/posts') Посты
-    block content
+    .wrapper
+      include includes/menu
+
+      .container
+        block content

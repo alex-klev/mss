@@ -1,21 +1,27 @@
 extends ../layout
 
 block content
-  h2 Список статей
-  if posts && posts.length
-    table.table-bordered.table-condensed
-      tr
-        th #
-        th Title
-        th HTML
-        th Active
-        th Date
-      each post, index in posts
+  .row
+    a(href='/admin/posts/new')
+      button.btn.btn-sm.btn-success Добавить статью
+  .row
+    h2 Список статей
+    if posts && posts.length
+      table.table.table-striped.table-condensed
         tr
-          td: a(href='/admin/posts/' + post['_id'])= '# ' + (index + 1)
-          td= post.title
-          td= post.html.substr(0, 80) + '...'
-          td= post.active
-          td= post.date
-  else
-    h2 Нет статей
+          th #
+          th Title
+          th HTML
+          th Active
+          th Date
+          th &times;
+        each post, index in posts
+          tr
+            td: a(href='/admin/posts/' + post['_id'])= '# ' + (index + 1)
+            td= post.title
+            td= post.html.substr(0, 80) + ((post.html.length > 80) ? ' ...' : '')
+            td= post.active
+            td= post.date
+            td: form(method='POST', action='/admin/posts/' + post['_id'] + '?_method=DELETE'): input.btn.btn-xs.btn-danger(type='submit', value='x')
+    else
+      h2 Нет статей

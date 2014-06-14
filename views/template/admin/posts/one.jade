@@ -5,22 +5,20 @@ block content
   - method = post ? '?_method=PUT' : ''
   - post = post || {}
 
-  form(method='POST', action='/admin/posts/' + action + method)
-    p title
-    p
-      input(name='title', value=post.title)
-    p date
-    p= post.date
-    p html
-    p
-      input(name='html', value=post.html)
-    p active
-    p
-      input(type='checkbox', name='active', checked=post.active)
-    input(type='submit')
-
   if action !== 'new'
-    p
-    p
-    form(method='POST', action='/admin/posts/' + action + '?_method=DELETE')
-      input(type='submit', value='Удалить')
+    .row
+      form.delete-post(method='POST', action='/admin/posts/' + action + '?_method=DELETE')
+        button.btn.btn-sm.btn-danger(type='submit') Удалить
+  .row
+    form(role='form', method='POST', action='/admin/posts/' + action + method)
+      .form-group
+        label(for='title') Title
+        input#title.form-control(name='title', type='text')
+      .form-group
+        label(for='content') HTML
+        input#content.form-control(name='html', type='text')
+      .checkbox
+        label
+          input(name='active', type='checkbox', checked=post.active)
+          | Показывать статью
+      button.btn.btn-success(type='submit')= (action === 'new') ? 'Создать' : 'Сохранить'
