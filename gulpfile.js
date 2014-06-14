@@ -7,8 +7,8 @@ var path    = require('path');
 var paths = {
   coffee    : ['./src/coffee/**/*.coffee'    ],
   less      : {
-    watch   : ['./src/less/**/*.less'        ],
-    src : ['./src/less/*.less'           ]
+    watch :   ['./src/less/**/*.less'        ],
+    src   :   ['./src/less/*.less'           ]
   },
   publicjs  : ['./src/coffee-cli/**/*.coffee']
 };
