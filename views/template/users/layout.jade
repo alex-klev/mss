@@ -18,10 +18,8 @@ html(lang='ru')
                     li(class=(new RegExp('^' + settings.pageUrl, 'gi').test(menu.href)) ? 'active' : '')
                       a(href=menu.href)= menu.title
 
-                li.signup.menu-active
-                  a(href='#') Sign Up
-                li.login
-                  a(href='#') Login
+                li.login.menu-active
+                  a(href='/login/') Вход
               .menu-slider
                 div
       .content-wrapper
