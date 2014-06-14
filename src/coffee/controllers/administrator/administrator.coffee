@@ -30,7 +30,7 @@ AdminController.Posts =
     if req.body.active then req.body.active = true else req.body.active = false
     Posts.findOneAndUpdate {_id: req.params.id}, req.body, {new: false}, (err)->
       return next(err) if err
-      res.redirect('/admin/posts/' + req.params.id)
+      res.redirect('/admin/posts/')
 
   delete: (req, res, next)->
     Posts.findOneAndRemove {_id: req.params.id}, (err)->
