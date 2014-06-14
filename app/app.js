@@ -120,6 +120,15 @@ app.use(function(req, res, next) {
   }
 });
 
+app.use(function(req, res, next) {
+  if (req.url === '/') {
+    app.set('activeMenu', '/');
+    return next();
+  }
+  app.set('activeMenu', req.url.replace(/(^(\/+)?)/, '').replace(/(\/[\s\S]*$)/, ''));
+  return next();
+});
+
 require('./controllers')(app);
 
 app.use(function(req, res, next) {
