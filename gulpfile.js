@@ -5,9 +5,12 @@ var less    = require('gulp-less');
 var path    = require('path');
 
 var paths = {
-  coffee   : ['./src/coffee/**/*.coffee'],
-  less     : ['./src/less/style.less'       ],
-  publicjs : ['./src/coffee-cli/**/*.coffee']
+  coffee    : ['./src/coffee/**/*.coffee'    ],
+  less      : {
+    watch   : ['./src/less/**/*.less'        ],
+    src : ['./src/less/*.less'           ]
+  },
+  publicjs  : ['./src/coffee-cli/**/*.coffee']
 };
 
 gulp.task('default', ['coffee', 'less', 'publicjs', 'watch']);
@@ -19,7 +22,7 @@ gulp.task('coffee', function() {
 });
 
 gulp.task('less', function () {
-  return gulp.src(paths.less)
+  return gulp.src(paths.less.src)
     .pipe(less({paths: [path.join(__dirname, 'less', 'includes')], compress: false}).on('error', gutil.log))
     .pipe(gulp.dest('./public/css'));
 });
@@ -32,7 +35,7 @@ gulp.task('publicjs', function() {
 
 gulp.task('watch', function() {
   gulp.watch(paths.coffee, ['coffee']);
-  gulp.watch('./src/less/**/*.less', ['less']);
+  gulp.watch(paths.less.watch, ['less']);
   gulp.watch(paths.publicjs, ['publicjs']);
 });
 
