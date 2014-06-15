@@ -5,5 +5,8 @@ html(lang='ru')
   body
     .main-page
       include includes/top-menu
-      include includes/content
+      if landing
+        include includes/l-content
+      else
+        include includes/content
       include includes/footer

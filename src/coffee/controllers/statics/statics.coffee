@@ -9,7 +9,8 @@ StaticController.get =
     res.render 'users/static/index'
 
   landing: (req, res)->
-    res.render 'users/static/landing'
+    res.render 'users/static/landing',
+      landing: true
 
   remont: (req, res)->
     res.render 'users/static/remont'
@@ -31,7 +32,10 @@ StaticController.post =
 
   login: (req, res, next)->
     console.log req.body
-    return next(new Error('403 Forbidden')) if !req.body.login or !req.body.password
+    if !req.body.login or !req.body.password
+      err = new Error 'Forbidden'
+      err.status = 403
+      return next(err)
     res.redirect '/admin/'
 
 module.exports = StaticController
