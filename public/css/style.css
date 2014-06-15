@@ -6102,7 +6102,7 @@ button.close {
   padding-left: 0px;
   padding-right: 0px;
   padding-top: 50px;
-  padding-bottom: 200px;
+  padding-bottom: 50px;
 }
 @media (min-width: 1200px) {
   .login-wrapper {
@@ -6318,6 +6318,7 @@ fieldset[disabled] .login-wrapper .login-form .login-group .login-input-offset .
   padding-left: 15px;
   padding-right: 15px;
   background-color: #ffffff;
+  min-height: 500px;
 }
 @media (min-width: 768px) {
   .main-wrapper .main-container {
