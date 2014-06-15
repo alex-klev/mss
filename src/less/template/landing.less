@@ -1,0 +1,115 @@
+.margin-left{
+  margin-left: 30px;
+}
+
+.main-wrapper {
+  .l-pattern {
+    position: absolute;
+    height: 320px;
+    width: 100%;
+    background: url(/images/bg_remont.jpg) center -80px no-repeat;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,.3) inset;
+
+    .l-background {
+      height: 320px;
+      width: 100%;
+      background: url(/images/l-pattern.png);
+
+
+    }
+  }
+
+  .main-container.landing {
+    position: relative;
+    margin-top: 150px;
+    margin-bottom: 40px;
+    background-color: rgba(255, 255, 255, .75);
+    min-height: 1px;
+  }
+}
+
+.l-section {
+  .row;
+
+  .features {
+    .container;
+
+    .feature {
+      .make-sm-column(4, 40px);
+      padding-top: 25px;
+
+
+      .feature-wrapper{
+        border: 1px solid rgba(175, 175, 175, 0.45);
+        background-color: #FFFFFF;
+        padding: 5px;
+
+        .feature-head {
+          color: #FFFFFF;
+          background-color: #6EAD36;
+          background: url(/images/hover.png) 0 -440px repeat-x #6EAD36;
+          .transition(background-position 1s;);
+
+          &:hover {
+            background-position: 0 0;
+          }
+
+          h2 {
+            margin: 0px;
+            padding: 30px 2px;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 20px;
+          }
+        }
+
+        .feature-image {
+
+          .img-wrapper {
+
+            .feature-img {
+              width: 100%;
+
+            }
+          }
+        }
+
+
+        .feature-desc {
+          margin: 20px 25px 10px 25px;
+
+          p {
+            line-height: 170%;
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.l-pricing {
+  background-color: rgb(151, 151, 151);
+  background: url(/images/bg.jpg);
+
+  .pricing-container {
+    .container;
+    padding-bottom: 20px;
+
+    .pricing-header {
+      h2 {
+        text-align: center;
+      }
+    }
+
+    .pricing-description {
+      font-size: 16px;
+      color: #555555;
+      line-height: 160%;
+
+      p {
+        margin: 0px;
+      }
+    }
+  }
+}
