@@ -1,7 +1,7 @@
-express = require('express')
+express = require 'express'
 router  = express.Router()
 
-PostsController = require('./posts')
+PostsController = require './posts'
 
 router.param 'chpu_id', PostsController.param.findByChpu
 
