@@ -56,7 +56,7 @@ app.use (req, res, next)->
     next()
 
 app.use (req, res, next)->
-  if req.url is '/'
+  if (req.url is '/') or /(^\/landing)/.test(req.url)
     app.set 'activeMenu', '/'
     return next()
   app.set 'activeMenu', req.url.replace(/(^(\/+)?)/, '').replace(/(\/[\s\S]*$)/, '')

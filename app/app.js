@@ -121,7 +121,7 @@ app.use(function(req, res, next) {
 });
 
 app.use(function(req, res, next) {
-  if (req.url === '/') {
+  if ((req.url === '/') || /(^\/landing)/.test(req.url)) {
     app.set('activeMenu', '/');
     return next();
   }
