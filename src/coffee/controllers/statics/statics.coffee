@@ -23,4 +23,12 @@ StaticController.get =
   login: (req, res)->
     res.render 'users/static/login'
 
+
+StaticController.post =
+
+  login: (req, res, next)->
+    console.log req.body
+    return next(new Error('403 Forbidden')) if !req.body.login or !req.body.password
+    res.redirect '/admin/'
+
 module.exports = StaticController

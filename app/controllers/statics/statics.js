@@ -23,4 +23,14 @@ StaticController.get = {
   }
 };
 
+StaticController.post = {
+  login: function(req, res, next) {
+    console.log(req.body);
+    if (!req.body.login || !req.body.password) {
+      return next(new Error('403 Forbidden'));
+    }
+    return res.redirect('/admin/');
+  }
+};
+
 module.exports = StaticController;

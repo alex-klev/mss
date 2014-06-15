@@ -2,7 +2,7 @@ extends ../layout
 
 block content
   .login-wrapper
-    form.login-form(role='form')
+    form.login-form(role='form', action='/login', method='POST')
       .login-group
         label.login-label(for='login') Login
         .login-input
@@ -10,12 +10,12 @@ block content
       .login-group
         label.login-label(for='password') Password
         .login-input
-          input#password.form-control(mane='password', type='password', placeholder='Password')
+          input#password.form-control(name='password', type='password', placeholder='Password')
       .login-group
         .login-input-offset
           .checkbox
             label
-              input(type='checkbox')
+              input(name='remember', type='checkbox')
               | Remember me
       .login-group
         .login-input-offset
