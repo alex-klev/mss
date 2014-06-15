@@ -1,7 +1,37 @@
-.content-wrapper {
+@import "login";
 
-  .content-container {
+.main-wrapper {
+  .row;
+  margin-left: 0px;
+  margin-right: 0px;
+
+  .main-container{
     .container;
+    background-color: rgba(255, 255, 255, 1);
+
+    .content-wrapper {
+      .row;
+
+      .content {
+        .container;
+
+        .header-content {
+          .row;
+
+          .main-info {
+            .container;
+          }
+
+          .description {
+            .container;
+
+            .description-info {
+              .make-lg-column(12);
+            }
+          }
+        }
+      }
+    }
   }
 
   border-top: 8px;

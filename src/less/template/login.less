@@ -1,0 +1,55 @@
+.login-wrapper {
+  .make-lg-column(12, 0px);
+
+  @media (min-width: @screen-xs-min) {
+    padding-left:  10px;
+    padding-right: 10px;
+  }
+  @media (min-width: @screen-sm-min) {
+    padding-left:  50px;
+    padding-right: 50px;
+  }
+  @media (min-width: @screen-md-min) {
+    padding-left:  140px;
+    padding-right: 140px;
+  }
+  @media (min-width: @screen-lg-min) {
+    padding-left:  200px;
+    padding-right: 200px;
+  }
+  padding-top: 50px;
+  padding-bottom: 200px;
+
+  .login-form {
+    .form-horizontal;
+
+    .login-group {
+      .form-group;
+      padding: 10px 0;
+
+      .login-label {
+        .make-sm-column(2);
+        .control-label;
+        text-align: right;
+      }
+
+      .login-input {
+        .make-sm-column(10);
+      }
+
+      .login-input-offset {
+        .make-sm-column-offset(2);
+        .make-sm-column(10);
+
+        .checkbox > label {
+          line-height: 22px;
+        }
+
+        .login-submit-button {
+          .btn;
+          .btn-default;
+        }
+      }
+    }
+  }
+}

@@ -738,12 +738,12 @@ pre code {
 }
 @media (min-width: 992px) {
   .container {
-    width: 960px;
+    width: 970px;
   }
 }
 @media (min-width: 1200px) {
   .container {
-    width: 960px;
+    width: 1170px;
   }
 }
 .container-fluid {
@@ -5613,8 +5613,24 @@ button.close {
 .menu-container nav.navi:after,
 .menu-container nav.navi .navi-collapse .menu-top:before,
 .menu-container nav.navi .navi-collapse .menu-top:after,
-.content-wrapper .content-container:before,
-.content-wrapper .content-container:after,
+.login-wrapper .login-form .form-group:before,
+.login-wrapper .login-form .form-group:after,
+.login-wrapper .login-form .login-group:before,
+.login-wrapper .login-form .login-group:after,
+.main-wrapper:before,
+.main-wrapper:after,
+.main-wrapper .main-container:before,
+.main-wrapper .main-container:after,
+.main-wrapper .main-container .content-wrapper:before,
+.main-wrapper .main-container .content-wrapper:after,
+.main-wrapper .main-container .content-wrapper .content:before,
+.main-wrapper .main-container .content-wrapper .content:after,
+.main-wrapper .main-container .content-wrapper .content .header-content:before,
+.main-wrapper .main-container .content-wrapper .content .header-content:after,
+.main-wrapper .main-container .content-wrapper .content .header-content .main-info:before,
+.main-wrapper .main-container .content-wrapper .content .header-content .main-info:after,
+.main-wrapper .main-container .content-wrapper .content .header-content .description:before,
+.main-wrapper .main-container .content-wrapper .content .header-content .description:after,
 .footer-wrapper .footer-container:before,
 .footer-wrapper .footer-container:after {
   content: " ";
@@ -5637,7 +5653,15 @@ button.close {
 .menu-container:after,
 .menu-container nav.navi:after,
 .menu-container nav.navi .navi-collapse .menu-top:after,
-.content-wrapper .content-container:after,
+.login-wrapper .login-form .form-group:after,
+.login-wrapper .login-form .login-group:after,
+.main-wrapper:after,
+.main-wrapper .main-container:after,
+.main-wrapper .main-container .content-wrapper:after,
+.main-wrapper .main-container .content-wrapper .content:after,
+.main-wrapper .main-container .content-wrapper .content .header-content:after,
+.main-wrapper .main-container .content-wrapper .content .header-content .main-info:after,
+.main-wrapper .main-container .content-wrapper .content .header-content .description:after,
 .footer-wrapper .footer-container:after {
   clear: both;
 }
@@ -5793,8 +5817,6 @@ button.close {
 /*цвет рамки панелей*/
 /*убираем скругление у блоков*/
 /*первичные кнопки имеют голубой фон*/
-/*если ширина экрана больше 992px, то ширина контейнера 960px*/
-/*если ширина экрана больше 1200px, то ширина контейнера так же 960px*/
 /*основным шрифтом будет Tahoma*/
 /*задаем базовый размер*/
 /*основной цвет текста на странице*/
@@ -5817,12 +5839,12 @@ button.close {
 }
 @media (min-width: 992px) {
   .menu-container {
-    width: 960px;
+    width: 970px;
   }
 }
 @media (min-width: 1200px) {
   .menu-container {
-    width: 960px;
+    width: 1170px;
   }
 }
 .menu-container > .navbar-header,
@@ -5844,7 +5866,7 @@ button.close {
   border: 1px solid transparent;
   background-color: #f8f8f8;
   border-color: #e7e7e7;
-  min-height: 150px;
+  min-height: 120px;
   border: 0;
   background-color: transparent;
 }
@@ -6074,42 +6096,373 @@ button.close {
   overflow: hidden;
   background-color: yellowgreen;
 }
-.content-wrapper {
+.login-wrapper {
+  position: relative;
+  min-height: 1px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 50px;
+  padding-bottom: 200px;
+}
+@media (min-width: 1200px) {
+  .login-wrapper {
+    float: left;
+    width: 100%;
+  }
+}
+@media (min-width: 480px) {
+  .login-wrapper {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+@media (min-width: 768px) {
+  .login-wrapper {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+@media (min-width: 992px) {
+  .login-wrapper {
+    padding-left: 140px;
+    padding-right: 140px;
+  }
+}
+@media (min-width: 1200px) {
+  .login-wrapper {
+    padding-left: 200px;
+    padding-right: 200px;
+  }
+}
+.login-wrapper .login-form .control-label,
+.login-wrapper .login-form .radio,
+.login-wrapper .login-form .checkbox,
+.login-wrapper .login-form .radio-inline,
+.login-wrapper .login-form .checkbox-inline {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 7px;
+}
+.login-wrapper .login-form .radio,
+.login-wrapper .login-form .checkbox {
+  min-height: 24px;
+}
+.login-wrapper .login-form .form-group {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.login-wrapper .login-form .form-control-static {
+  padding-top: 7px;
+}
+@media (min-width: 768px) {
+  .login-wrapper .login-form .control-label {
+    text-align: right;
+  }
+}
+.login-wrapper .login-form .has-feedback .form-control-feedback {
+  top: 0;
+  right: 15px;
+}
+.login-wrapper .login-form .login-group {
+  margin-left: -15px;
+  margin-right: -15px;
+  padding: 10px 0;
+}
+.login-wrapper .login-form .login-group .login-label {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 7px;
+  text-align: right;
+}
+@media (min-width: 768px) {
+  .login-wrapper .login-form .login-group .login-label {
+    float: left;
+    width: 16.66666667%;
+  }
+}
+.login-wrapper .login-form .login-group .login-input {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 768px) {
+  .login-wrapper .login-form .login-group .login-input {
+    float: left;
+    width: 83.33333333%;
+  }
+}
+.login-wrapper .login-form .login-group .login-input-offset {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 768px) {
+  .login-wrapper .login-form .login-group .login-input-offset {
+    margin-left: 16.66666667%;
+  }
+}
+@media (min-width: 768px) {
+  .login-wrapper .login-form .login-group .login-input-offset {
+    float: left;
+    width: 83.33333333%;
+  }
+}
+.login-wrapper .login-form .login-group .login-input-offset .checkbox > label {
+  line-height: 22px;
+}
+.login-wrapper .login-form .login-group .login-input-offset .login-submit-button {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 12px;
+  line-height: 1.42857143;
+  border-radius: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: #333333;
+  background-color: #ffffff;
+  border-color: #cccccc;
+}
+.login-wrapper .login-form .login-group .login-input-offset .login-submit-button:focus,
+.login-wrapper .login-form .login-group .login-input-offset .login-submit-button:active:focus,
+.login-wrapper .login-form .login-group .login-input-offset .login-submit-button.active:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.login-wrapper .login-form .login-group .login-input-offset .login-submit-button:hover,
+.login-wrapper .login-form .login-group .login-input-offset .login-submit-button:focus {
+  color: #333333;
+  text-decoration: none;
+}
+.login-wrapper .login-form .login-group .login-input-offset .login-submit-button:active,
+.login-wrapper .login-form .login-group .login-input-offset .login-submit-button.active {
+  outline: 0;
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+.login-wrapper .login-form .login-group .login-input-offset .login-submit-button.disabled,
+.login-wrapper .login-form .login-group .login-input-offset .login-submit-button[disabled],
+fieldset[disabled] .login-wrapper .login-form .login-group .login-input-offset .login-submit-button {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.login-wrapper .login-form .login-group .login-input-offset .login-submit-button:hover,
+.login-wrapper .login-form .login-group .login-input-offset .login-submit-button:focus,
+.login-wrapper .login-form .login-group .login-input-offset .login-submit-button:active,
+.login-wrapper .login-form .login-group .login-input-offset .login-submit-button.active,
+.open .dropdown-toggle.login-wrapper .login-form .login-group .login-input-offset .login-submit-button {
+  color: #333333;
+  background-color: #ebebeb;
+  border-color: #adadad;
+}
+.login-wrapper .login-form .login-group .login-input-offset .login-submit-button:active,
+.login-wrapper .login-form .login-group .login-input-offset .login-submit-button.active,
+.open .dropdown-toggle.login-wrapper .login-form .login-group .login-input-offset .login-submit-button {
+  background-image: none;
+}
+.login-wrapper .login-form .login-group .login-input-offset .login-submit-button.disabled,
+.login-wrapper .login-form .login-group .login-input-offset .login-submit-button[disabled],
+fieldset[disabled] .login-wrapper .login-form .login-group .login-input-offset .login-submit-button,
+.login-wrapper .login-form .login-group .login-input-offset .login-submit-button.disabled:hover,
+.login-wrapper .login-form .login-group .login-input-offset .login-submit-button[disabled]:hover,
+fieldset[disabled] .login-wrapper .login-form .login-group .login-input-offset .login-submit-button:hover,
+.login-wrapper .login-form .login-group .login-input-offset .login-submit-button.disabled:focus,
+.login-wrapper .login-form .login-group .login-input-offset .login-submit-button[disabled]:focus,
+fieldset[disabled] .login-wrapper .login-form .login-group .login-input-offset .login-submit-button:focus,
+.login-wrapper .login-form .login-group .login-input-offset .login-submit-button.disabled:active,
+.login-wrapper .login-form .login-group .login-input-offset .login-submit-button[disabled]:active,
+fieldset[disabled] .login-wrapper .login-form .login-group .login-input-offset .login-submit-button:active,
+.login-wrapper .login-form .login-group .login-input-offset .login-submit-button.disabled.active,
+.login-wrapper .login-form .login-group .login-input-offset .login-submit-button[disabled].active,
+fieldset[disabled] .login-wrapper .login-form .login-group .login-input-offset .login-submit-button.active {
+  background-color: #ffffff;
+  border-color: #cccccc;
+}
+.login-wrapper .login-form .login-group .login-input-offset .login-submit-button .badge {
+  color: #ffffff;
+  background-color: #333333;
+}
+.main-wrapper {
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-left: 0px;
+  margin-right: 0px;
   border-top: 8px;
   border-top-color: #6EAD36;
   border-top-style: outset;
 }
-.content-wrapper .content-container {
+.main-wrapper .main-container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: #ffffff;
+}
+@media (min-width: 768px) {
+  .main-wrapper .main-container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .main-wrapper .main-container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .main-wrapper .main-container {
+    width: 1170px;
+  }
+}
+.main-wrapper .main-container > .navbar-header,
+.main-wrapper .main-container > .navbar-collapse {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+@media (min-width: 768px) {
+  .main-wrapper .main-container > .navbar-header,
+  .main-wrapper .main-container > .navbar-collapse {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+.main-wrapper .main-container .content-wrapper {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.main-wrapper .main-container .content-wrapper .content {
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
 }
 @media (min-width: 768px) {
-  .content-wrapper .content-container {
+  .main-wrapper .main-container .content-wrapper .content {
     width: 750px;
   }
 }
 @media (min-width: 992px) {
-  .content-wrapper .content-container {
-    width: 960px;
+  .main-wrapper .main-container .content-wrapper .content {
+    width: 970px;
   }
 }
 @media (min-width: 1200px) {
-  .content-wrapper .content-container {
-    width: 960px;
+  .main-wrapper .main-container .content-wrapper .content {
+    width: 1170px;
   }
 }
-.content-wrapper .content-container > .navbar-header,
-.content-wrapper .content-container > .navbar-collapse {
+.main-wrapper .main-container .content-wrapper .content > .navbar-header,
+.main-wrapper .main-container .content-wrapper .content > .navbar-collapse {
   margin-right: -15px;
   margin-left: -15px;
 }
 @media (min-width: 768px) {
-  .content-wrapper .content-container > .navbar-header,
-  .content-wrapper .content-container > .navbar-collapse {
+  .main-wrapper .main-container .content-wrapper .content > .navbar-header,
+  .main-wrapper .main-container .content-wrapper .content > .navbar-collapse {
     margin-right: 0;
     margin-left: 0;
+  }
+}
+.main-wrapper .main-container .content-wrapper .content .header-content {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.main-wrapper .main-container .content-wrapper .content .header-content .main-info {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 768px) {
+  .main-wrapper .main-container .content-wrapper .content .header-content .main-info {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .main-wrapper .main-container .content-wrapper .content .header-content .main-info {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .main-wrapper .main-container .content-wrapper .content .header-content .main-info {
+    width: 1170px;
+  }
+}
+.main-wrapper .main-container .content-wrapper .content .header-content .main-info > .navbar-header,
+.main-wrapper .main-container .content-wrapper .content .header-content .main-info > .navbar-collapse {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+@media (min-width: 768px) {
+  .main-wrapper .main-container .content-wrapper .content .header-content .main-info > .navbar-header,
+  .main-wrapper .main-container .content-wrapper .content .header-content .main-info > .navbar-collapse {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+.main-wrapper .main-container .content-wrapper .content .header-content .description {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 768px) {
+  .main-wrapper .main-container .content-wrapper .content .header-content .description {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .main-wrapper .main-container .content-wrapper .content .header-content .description {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .main-wrapper .main-container .content-wrapper .content .header-content .description {
+    width: 1170px;
+  }
+}
+.main-wrapper .main-container .content-wrapper .content .header-content .description > .navbar-header,
+.main-wrapper .main-container .content-wrapper .content .header-content .description > .navbar-collapse {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+@media (min-width: 768px) {
+  .main-wrapper .main-container .content-wrapper .content .header-content .description > .navbar-header,
+  .main-wrapper .main-container .content-wrapper .content .header-content .description > .navbar-collapse {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+.main-wrapper .main-container .content-wrapper .content .header-content .description .description-info {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 1200px) {
+  .main-wrapper .main-container .content-wrapper .content .header-content .description .description-info {
+    float: left;
+    width: 100%;
   }
 }
 .section-nav {
@@ -6132,12 +6485,12 @@ button.close {
 }
 @media (min-width: 992px) {
   .footer-wrapper .footer-container {
-    width: 960px;
+    width: 970px;
   }
 }
 @media (min-width: 1200px) {
   .footer-wrapper .footer-container {
-    width: 960px;
+    width: 1170px;
   }
 }
 .footer-wrapper .footer-container > .navbar-header,

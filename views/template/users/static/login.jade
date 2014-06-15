@@ -1,6 +1,22 @@
 extends ../layout
 
 block content
-  .container
-    h1
-      span.mongodb-logo Вход
+  .login-wrapper
+    form.login-form(role='form')
+      .login-group
+        label.login-label(for='login') Login
+        .login-input
+          input#login.form-control(name='login', type='text', placeholder='Login')
+      .login-group
+        label.login-label(for='password') Password
+        .login-input
+          input#password.form-control(mane='password', type='password', placeholder='Password')
+      .login-group
+        .login-input-offset
+          .checkbox
+            label
+              input(type='checkbox')
+              | Remember me
+      .login-group
+        .login-input-offset
+          button.login-submit-button(type='submit') Войти
