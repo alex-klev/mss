@@ -6,6 +6,9 @@ StaticController.get = {
   index: function(req, res) {
     return res.render('users/static/index');
   },
+  landing: function(req, res) {
+    return res.render('users/static/landing');
+  },
   remont: function(req, res) {
     return res.render('users/static/remont');
   },

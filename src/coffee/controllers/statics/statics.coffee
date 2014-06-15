@@ -8,6 +8,9 @@ StaticController.get =
   index: (req, res)->
     res.render 'users/static/index'
 
+  landing: (req, res)->
+    res.render 'users/static/landing'
+
   remont: (req, res)->
     res.render 'users/static/remont'
 
