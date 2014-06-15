@@ -4,48 +4,6 @@ html(lang='ru')
     include includes/head
   body
     .main-page
-      .menu-wrapper
-        .menu-container
-          nav.navi
-            .navi-collapse
-              ul.menu-top
-                if settings.activeMenu === '/'
-                  each menu in settings.menu
-                    li(class=(menu.href === '/') ? 'menu-active' : '')
-                      a(href=menu.href)= menu.title
-                else
-                  each menu in settings.menu
-                    li(class=(new RegExp('^\/' + settings.activeMenu, 'gi').test(menu.href)) ? 'menu-active' : '')
-                      a(href=menu.href)= menu.title
-
-                li.login(class=(settings.activeMenu === 'login') ? 'menu-active' : '')
-                  a(href='/login/') Вход
-              .menu-slider
-                div
-      .content-wrapper
-        .content-container
-          .blog-header
-            div.learn-more
-              .wide-row.header
-                block content
-      footer.footer-wrapper
-        .footer-container
-          .row
-            .col-xs-2
-              a.brand(href='/', target='_blank') Company
-            .col-xs-10
-              ul
-                li
-                  | ©2014 Company, Inc.
-                li
-                  a(href='#') Информация
-                li
-                  a(href='#') Условия
-                li
-                  a(href='#') Поддержка
-                li
-                  a(href='#') Блог
-                li
-                  a(mailto='#') Контакты
-                li
-                  | +7 (999) 876-54-32
+      include includes/top-menu
+      include includes/content
+      include includes/footer

@@ -1,0 +1,16 @@
+.main-wrapper
+  .main-container
+    .content-wrapper
+      .content
+
+        .header-content
+          .main-info
+            - header1 = header1 || 'Заголовок'
+            h1= header1
+          - headerInfo = headerInfo || 'Описание'
+          if headerInfo
+            .description
+              .description-info
+                p= headerInfo
+
+        block content
