@@ -1,7 +1,7 @@
 express = require('express')
 router  = express.Router()
 
-adminPermissions = require '../../middelwares/permissions/admin'
+adminPermissions = require '../../middlewares/permissions/admin'
 
 AdminController = require './administrator'
 
