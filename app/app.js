@@ -1,10 +1,6 @@
-var Menu, app, bodyParser, connect, cookieParser, debug, express, favicon, fs, logger, methodOverride, modelsPath, mongoose, path;
+var Menu, app, connect, debug, express, favicon, fs, logger, middleware, modelsPath, mongoose, path;
 
-methodOverride = require('method-override');
-
-cookieParser = require('cookie-parser');
-
-bodyParser = require('body-parser');
+middleware = require('./middlewares');
 
 mongoose = require('mongoose');
 
@@ -30,15 +26,7 @@ app.use(favicon());
 
 app.use(logger('dev'));
 
-app.use(bodyParser.json());
-
-app.use(bodyParser.urlencoded());
-
-app.use(methodOverride('_method'));
-
-app.use(cookieParser());
-
-app.use(express["static"](path.join(__dirname, './../public')));
+middleware(app);
 
 connect = function() {
   var options;
@@ -118,15 +106,6 @@ app.use(function(req, res, next) {
   } else {
     return next();
   }
-});
-
-app.use(function(req, res, next) {
-  if ((req.url === '/') || /(^\/landing)/.test(req.url)) {
-    app.set('activeMenu', '/');
-    return next();
-  }
-  app.set('activeMenu', req.url.replace(/(^(\/+)?)/, '').replace(/(\/[\s\S]*$)/, ''));
-  return next();
 });
 
 require('./controllers')(app);
