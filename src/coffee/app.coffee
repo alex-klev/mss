@@ -1,13 +1,11 @@
-methodOverride = require 'method-override'
-cookieParser   = require 'cookie-parser'
-bodyParser     = require 'body-parser'
-mongoose       = require 'mongoose'
-favicon        = require 'static-favicon'
-express        = require 'express'
-logger         = require 'morgan'
-path           = require 'path'
-debug          = require('debug')('app')
-fs             = require 'fs'
+middleware = require './middlewares'
+mongoose   = require 'mongoose'
+favicon    = require 'static-favicon'
+express    = require 'express'
+logger     = require 'morgan'
+path       = require 'path'
+debug      = require('debug')('app')
+fs         = require 'fs'
 
 app = express()
 
@@ -15,11 +13,8 @@ app.set 'views', path.join(__dirname, './../views/template')
 app.set 'view engine', 'jade'
 app.use favicon()
 app.use logger('dev')
-app.use bodyParser.json()
-app.use bodyParser.urlencoded()
-app.use methodOverride('_method')
-app.use cookieParser()
-app.use express.static(path.join(__dirname, './../public'))
+
+middleware(app);
 
 connect = ()->
   options = {server: {socketOptions: {keepAlive: 1}}}
@@ -54,13 +49,6 @@ app.use (req, res, next)->
     )
   else
     next()
-
-app.use (req, res, next)->
-  if (req.url is '/') or /(^\/landing)/.test(req.url)
-    app.set 'activeMenu', '/'
-    return next()
-  app.set 'activeMenu', req.url.replace(/(^(\/+)?)/, '').replace(/(\/[\s\S]*$)/, '')
-  return next()
 
 # Bootstrap routes
 require('./controllers') app
