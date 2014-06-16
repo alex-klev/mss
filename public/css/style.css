@@ -6654,6 +6654,14 @@ fieldset[disabled] .login-wrapper .login-form .login-group .login-input-offset .
   margin: 0;
   width: 100%;
 }
+.footer-wrapper {
+  border-top: 3px;
+  border-top-color: #6ead36;
+  border-top-style: groove;
+  background-color: rgba(167, 167, 167, 0.44);
+  min-height: 150px;
+  padding-top: 25px;
+}
 .footer-wrapper .footer-container {
   margin-right: auto;
   margin-left: auto;
