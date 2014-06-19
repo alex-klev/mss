@@ -1,8 +1,9 @@
-var gulp    = require('gulp');
-var gutil   = require('gulp-util');
-var coffee  = require('gulp-coffee');
-var less    = require('gulp-less');
-var path    = require('path');
+var gulp       = require('gulp');
+var sourcemaps = require('gulp-sourcemaps');
+var coffee     = require('gulp-coffee');
+var gutil      = require('gulp-util');
+var less       = require('gulp-less');
+var path       = require('path');
 
 var paths = {
   coffee    : ['./src/coffee/**/*.coffee'    ],
@@ -29,8 +30,10 @@ gulp.task('less', function () {
 
 gulp.task('publicjs', function() {
   return gulp.src(paths.publicjs)
-    .pipe(coffee({bare: false, sourceMap: true}).on('error', gutil.log))
-    .pipe(gulp.dest('./public/js'))
+    .pipe(sourcemaps.init())
+    .pipe(coffee({bare: false}).on('error', gutil.log))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('./public/js/'))
 });
 
 gulp.task('watch', function() {
