@@ -25,6 +25,7 @@
     "gulp-changed": "latest",
     "gulp-coffee": "latest",
     "gulp-less": "latest",
+    "gulp-sourcemaps": "latest",
     "gulp-util": "latest"
   }
 }
