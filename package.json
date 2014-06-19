@@ -10,21 +10,21 @@
   },
   "license": "ISC",
   "dependencies": {
-    "body-parser": "~1.0.0",
-    "cookie-parser": "~1.0.1",
-    "debug": "~0.7.4",
-    "express": "~4",
-    "jade": "~1.3.0",
-    "method-override": "^2.0.2",
-    "mongoose": "^3.8.11",
-    "morgan": "~1.0.0",
-    "static-favicon": "~1.0.0"
+    "body-parser": "latest",
+    "cookie-parser": "latest",
+    "debug": "latest",
+    "express": "latest",
+    "jade": "latest",
+    "method-override": "latest",
+    "mongoose": "latest",
+    "morgan": "latest",
+    "serve-favicon": "latest"
   },
   "devDependencies": {
-    "gulp": "^3.6.2",
-    "gulp-changed": "^0.3.0",
-    "gulp-coffee": "^1.4.3",
-    "gulp-less": "^1.2.3",
-    "gulp-util": "^2.2.14"
+    "gulp": "latest",
+    "gulp-changed": "latest",
+    "gulp-coffee": "latest",
+    "gulp-less": "latest",
+    "gulp-util": "latest"
   }
 }
