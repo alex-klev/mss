@@ -4,7 +4,7 @@ middleware = require('./middlewares');
 
 mongoose = require('mongoose');
 
-favicon = require('static-favicon');
+favicon = require('serve-favicon');
 
 express = require('express');
 
@@ -22,7 +22,7 @@ app.set('views', path.join(__dirname, './../views/template'));
 
 app.set('view engine', 'jade');
 
-app.use(favicon());
+app.use(favicon(path.join(__dirname + './../public/images/favicon.png')));
 
 app.use(logger('dev'));
 
