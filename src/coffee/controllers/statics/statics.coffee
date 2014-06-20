@@ -31,16 +31,24 @@ StaticController.get =
 StaticController.post =
 
   login: (req, res, next)->
-    err = new Error 'Forbidden'
-    err.status = 403
-    err.message = 'Неверный login или password'
     if !req.body.login or !req.body.password
-      return next(err)
+      req.session.error = 'Неверный login или password'
+      return res.redirect '/login'
 
-    User.findOne login: req.body.login, (e, user)->
-      return next e if e
-      return next err if !user
-      return next err if !user.authenticate req.body.password
-      return res.redirect '/admin/'
+    User.findOne login: req.body.login, (err, user)->
+      return next err if err
+
+      if !user
+        req.session.error = 'Неверный login или password'
+        return res.redirect '/login'
+
+      if !user.authenticate req.body.password
+        req.session.error = 'Неверный login или password'
+        return res.redirect '/login'
+
+      req.session.regenerate ()->
+        req.session.user = user
+        req.session.success = 'Добро пожаловать, ' + user.login
+        return res.redirect 'back'
 
 module.exports = StaticController
