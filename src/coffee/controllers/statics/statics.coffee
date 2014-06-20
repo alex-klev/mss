@@ -1,5 +1,5 @@
-#mongoose = require 'mongoose'
-#Posts    = mongoose.model 'Posts'
+mongoose = require 'mongoose'
+User     = mongoose.model 'User'
 
 StaticController = {}
 
@@ -31,11 +31,16 @@ StaticController.get =
 StaticController.post =
 
   login: (req, res, next)->
-    console.log req.body
+    err = new Error 'Forbidden'
+    err.status = 403
+    err.message = 'Неверный login или password'
     if !req.body.login or !req.body.password
-      err = new Error 'Forbidden'
-      err.status = 403
       return next(err)
-    res.redirect '/admin/'
+
+    User.findOne login: req.body.login, (e, user)->
+      return next e if e
+      return next err if !user
+      return next err if !user.authenticate req.body.password
+      return res.redirect '/admin/'
 
 module.exports = StaticController
