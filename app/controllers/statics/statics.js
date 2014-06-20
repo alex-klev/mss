@@ -1,4 +1,8 @@
-var StaticController;
+var StaticController, User, mongoose;
+
+mongoose = require('mongoose');
+
+User = mongoose.model('User');
 
 StaticController = {};
 
@@ -31,13 +35,26 @@ StaticController.get = {
 StaticController.post = {
   login: function(req, res, next) {
     var err;
-    console.log(req.body);
+    err = new Error('Forbidden');
+    err.status = 403;
+    err.message = 'Неверный login или password';
     if (!req.body.login || !req.body.password) {
-      err = new Error('Forbidden');
-      err.status = 403;
       return next(err);
     }
-    return res.redirect('/admin/');
+    return User.findOne({
+      login: req.body.login
+    }, function(e, user) {
+      if (e) {
+        return next(e);
+      }
+      if (!user) {
+        return next(err);
+      }
+      if (!user.authenticate(req.body.password)) {
+        return next(err);
+      }
+      return res.redirect('/admin/');
+    });
   }
 };
 
