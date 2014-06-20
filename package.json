@@ -11,9 +11,11 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "latest",
+    "connect-mongo": "latest",
     "cookie-parser": "latest",
     "debug": "latest",
     "express": "latest",
+    "express-session": "latest",
     "jade": "latest",
     "method-override": "latest",
     "mongoose": "latest",
