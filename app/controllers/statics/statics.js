@@ -34,26 +34,29 @@ StaticController.get = {
 
 StaticController.post = {
   login: function(req, res, next) {
-    var err;
-    err = new Error('Forbidden');
-    err.status = 403;
-    err.message = 'Неверный login или password';
     if (!req.body.login || !req.body.password) {
-      return next(err);
+      req.session.error = 'Неверный login или password';
+      return res.redirect('/login');
     }
     return User.findOne({
       login: req.body.login
-    }, function(e, user) {
-      if (e) {
-        return next(e);
+    }, function(err, user) {
+      if (err) {
+        return next(err);
       }
       if (!user) {
-        return next(err);
+        req.session.error = 'Неверный login или password';
+        return res.redirect('/login');
       }
       if (!user.authenticate(req.body.password)) {
-        return next(err);
+        req.session.error = 'Неверный login или password';
+        return res.redirect('/login');
       }
-      return res.redirect('/admin/');
+      return req.session.regenerate(function() {
+        req.session.user = user;
+        req.session.success = 'Добро пожаловать, ' + user.login;
+        return res.redirect('back');
+      });
     });
   }
 };
