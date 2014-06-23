@@ -26,7 +26,6 @@ AdminController.Posts =
       res.redirect('/admin/posts/')
 
   update: (req, res, next)->
-    console.log req.body
     if req.body.active then req.body.active = true else req.body.active = false
     Posts.findOneAndUpdate {_id: req.params.id}, req.body, {new: false}, (err)->
       return next(err) if err
