@@ -37,7 +37,6 @@ AdminController.Posts = {
     });
   },
   update: function(req, res, next) {
-    console.log(req.body);
     if (req.body.active) {
       req.body.active = true;
     } else {

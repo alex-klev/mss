@@ -20,7 +20,9 @@
     "method-override": "latest",
     "mongoose": "latest",
     "morgan": "latest",
-    "serve-favicon": "latest"
+    "serve-favicon": "latest",
+    "winston": "latest",
+    "winston-mongodb": "latest"
   },
   "devDependencies": {
     "gulp": "latest",
