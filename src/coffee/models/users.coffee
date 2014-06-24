@@ -17,11 +17,11 @@ User = new Schema
 User
   .virtual 'password'
   .set (password)->
-    @._password = password
-    @.salt = @.makeSalt()
-    @.hPassword = @.encryptPassword password
+    @_password = password
+    @salt = @makeSalt()
+    @hPassword = @encryptPassword password
   .get ()->
-    return @._password
+    return @_password
 
 User.path 'login'
   .validate (login)->
@@ -36,7 +36,7 @@ User.path 'hPassword'
 User.methods =
 
   authenticate: (plainText)->
-    return @.encryptPassword(plainText) is @.hPassword
+    return @encryptPassword(plainText) is @hPassword
 
   makeSalt: ()->
     return Math.round((new Date().valueOf() * Math.random())) + ''
