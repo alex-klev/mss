@@ -9,13 +9,6 @@ fs         = require 'fs'
 
 app = express()
 
-app.set 'views', path.join(__dirname, './../views/template')
-app.set 'view engine', 'jade'
-app.use favicon(path.join(__dirname + './../public/images/favicon.png'))
-app.use logger('dev')
-
-middleware(app);
-
 connect = ()->
   options = {server: {socketOptions: {keepAlive: 1}}}
   mongoose.connect 'mongodb://localhost/mss', options
@@ -28,27 +21,12 @@ modelsPath = path.join(__dirname, './models')
 fs.readdirSync(modelsPath).forEach (file)->
   require(modelsPath + '/' + file) if ~file.indexOf '.js'
 
-Menu = mongoose.model 'Menu'
-app.use (req, res, next)->
-  if !app.get('menu')
-    Menu.find({}).exec((err, menu)->
-      if err
-        gebug err
-        throw err
-      unless menu.length
-        main    = new Menu {title:'Главная', href: '/'}
-        remont  = new Menu {title:'Ремонт',  href: '/remont/'}
-        post    = new Menu {title:'Статьи',  href: '/posts/'}
-        gallary = new Menu {title:'Галерея', href: '/gallery/'}
-        price   = new Menu {title:'Цены',    href: '/price/'}
+app.set 'views', path.join(__dirname, './../views/template')
+app.set 'view engine', 'jade'
+app.use favicon(path.join(__dirname + './../public/images/favicon.png'))
+app.use logger('dev')
 
-        main.save ()->remont.save ()->post.save ()->gallary.save ()->price.save ()->
-        menu = [main, remont, post, gallary, price]
-      app.set 'menu', menu
-      next()
-    )
-  else
-    next()
+middleware(app);
 
 # Bootstrap routes
 require('./controllers') app

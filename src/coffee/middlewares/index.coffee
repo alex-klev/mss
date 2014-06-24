@@ -1,6 +1,7 @@
 methodOverride = require 'method-override'
 cookieParser   = require 'cookie-parser'
 bodyParser     = require 'body-parser'
+mongoose       = require 'mongoose'
 express        = require 'express'
 session        = require 'express-session'
 MongoStore     = require('connect-mongo')(session)
@@ -33,3 +34,26 @@ module.exports = (app)->
       return next()
     app.set 'activeMenu', req.url.replace(/(^(\/+)?)/, '').replace(/(\/[\s\S]*$)/, '')
     return next()
+
+  Menu = mongoose.model 'Menu'
+
+  app.use (req, res, next)->
+    if !app.get('menu')
+      Menu.find({}).exec((err, menu)->
+        if err
+          gebug err
+          throw err
+        unless menu.length
+          main    = new Menu {title:'Главная', href: '/'}
+          remont  = new Menu {title:'Ремонт',  href: '/remont/'}
+          post    = new Menu {title:'Статьи',  href: '/posts/'}
+          gallary = new Menu {title:'Галерея', href: '/gallery/'}
+          price   = new Menu {title:'Цены',    href: '/price/'}
+
+          main.save ()->remont.save ()->post.save ()->gallary.save ()->price.save ()->
+          menu = [main, remont, post, gallary, price]
+        app.set 'menu', menu
+        next()
+      )
+    else
+      next()
