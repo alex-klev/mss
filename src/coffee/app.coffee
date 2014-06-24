@@ -2,6 +2,7 @@ middleware = require './middlewares'
 mongoose   = require 'mongoose'
 favicon    = require 'serve-favicon'
 express    = require 'express'
+config     = require './config'
 logger     = require 'morgan'
 path       = require 'path'
 log        = require('./helpers/log')(module)
@@ -19,11 +20,14 @@ mongoose.connection.on 'disconnected', -> connect()
 # Bootstrap models
 modelsPath = path.join(__dirname, './models')
 fs.readdirSync(modelsPath).forEach (file)->
-  require(modelsPath + '/' + file) if ~file.indexOf '.js'
+  if config.get 'COFFEE'
+    require(modelsPath + '/' + file) if ~file.indexOf '.coffee'
+  else
+    require(modelsPath + '/' + file) if ~file.indexOf '.js'
 
-app.set 'views', path.join(__dirname, './../views/template')
+app.set 'views', path.join(__dirname, './../../views/template')
 app.set 'view engine', 'jade'
-app.use favicon(path.join(__dirname + './../public/images/favicon.png'))
+app.use favicon(path.join(__dirname + './../../public/images/favicon.png'))
 app.use logger('dev')
 
 middleware(app);
