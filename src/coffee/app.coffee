@@ -4,7 +4,7 @@ favicon    = require 'serve-favicon'
 express    = require 'express'
 logger     = require 'morgan'
 path       = require 'path'
-debug      = require('debug')('app')
+log        = require('./helpers/log')(module)
 fs         = require 'fs'
 
 app = express()
@@ -20,7 +20,7 @@ connect = ()->
   options = {server: {socketOptions: {keepAlive: 1}}}
   mongoose.connect 'mongodb://localhost/mss', options
 connect()
-mongoose.connection.on 'error', (err)-> debug err
+mongoose.connection.on 'error', (err)-> log.error err
 mongoose.connection.on 'disconnected', -> connect()
 
 # Bootstrap models
@@ -68,6 +68,7 @@ app.use (req, res, next)->
 if app.get('env') is 'development'
   app.use (err, req, res, next)->
     res.status err.status or 500
+    log.error err
     res.render 'errors/error',
       message: err.message
       error: err
@@ -79,6 +80,7 @@ if app.get('env') is 'development'
 # no stacktraces leaked to user
 app.use (err, req, res, next)->
   res.status err.status or 500
+  log.error err
   res.render 'errors/error',
     message: err.message
     error: {}

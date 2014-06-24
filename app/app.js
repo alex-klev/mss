@@ -1,4 +1,4 @@
-var Menu, app, connect, debug, express, favicon, fs, logger, middleware, modelsPath, mongoose, path;
+var Menu, app, connect, express, favicon, fs, log, logger, middleware, modelsPath, mongoose, path;
 
 middleware = require('./middlewares');
 
@@ -12,7 +12,7 @@ logger = require('morgan');
 
 path = require('path');
 
-debug = require('debug')('app');
+log = require('./helpers/log')(module);
 
 fs = require('fs');
 
@@ -43,7 +43,7 @@ connect = function() {
 connect();
 
 mongoose.connection.on('error', function(err) {
-  return debug(err);
+  return log.error(err);
 });
 
 mongoose.connection.on('disconnected', function() {
@@ -120,6 +120,7 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
+    log.error(err);
     res.render('errors/error', {
       message: err.message,
       error: err
@@ -129,6 +130,7 @@ if (app.get('env') === 'development') {
 
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
+  log.error(err);
   res.render('errors/error', {
     message: err.message,
     error: {}
