@@ -19,7 +19,7 @@ gulp.task('default', ['coffee', 'less', 'publicjs', 'watch']);
 gulp.task('coffee', function() {
   return gulp.src(paths.coffee)
     .pipe(coffee({bare: true, sourceMap: false}).on('error', gutil.log))
-    .pipe(gulp.dest('./app'))
+    .pipe(gulp.dest('./build/app'))
 });
 
 gulp.task('less', function () {

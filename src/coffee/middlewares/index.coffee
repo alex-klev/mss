@@ -12,7 +12,7 @@ module.exports = (app)->
   app.use bodyParser.urlencoded()
   app.use methodOverride('_method')
   app.use cookieParser()
-  app.use express.static(path.join(__dirname, './../../public'))
+  app.use express.static(path.join(__dirname, './../../../public'))
 
   app.use session
     secret: 'MSS_SECRET',
