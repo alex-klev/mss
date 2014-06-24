@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+
+log = require('../helpers/log')(module)
+app = require '../app'
+
+app.set 'port', process.env.PORT || 3000
+
+server = app.listen app.get('port'), ()->
+  log.info 'Express server listening on port ' + server.address().port
