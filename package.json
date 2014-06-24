@@ -19,6 +19,7 @@
     "method-override": "latest",
     "mongoose": "latest",
     "morgan": "latest",
+    "nconf": "latest",
     "serve-favicon": "latest",
     "winston": "latest",
     "winston-mongodb": "latest"
