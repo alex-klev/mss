@@ -50,7 +50,7 @@ app.use (req, res, next)->
 if app.get('env') is 'development'
   app.use (err, req, res, next)->
     res.status err.status or 500
-    log.error err
+    log.error err:err, url:req.url
     res.render 'errors/error',
       message: err.message
       error: err
@@ -62,7 +62,7 @@ if app.get('env') is 'development'
 # no stacktraces leaked to user
 app.use (err, req, res, next)->
   res.status err.status or 500
-  log.error err
+  log.error err:err, url:req.url
   res.render 'errors/error',
     message: err.message
     error: {}
