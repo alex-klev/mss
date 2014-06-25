@@ -49,8 +49,12 @@ app.use (req, res, next)->
 # will print stacktrace
 if app.get('env') is 'development'
   app.use (err, req, res, next)->
-    res.status err.status or 500
-    log.error err:err, url:req.url
+    err.status ?= 500
+    err.msg = err.message
+    err.url = req.url
+    log.error err:err
+
+    res.status err.status
     res.render 'errors/error',
       message: err.message
       error: err
@@ -61,8 +65,12 @@ if app.get('env') is 'development'
 # production error handler
 # no stacktraces leaked to user
 app.use (err, req, res, next)->
-  res.status err.status or 500
-  log.error err:err, url:req.url
+  err.status ?= 500
+  err.msg = err.message
+  err.url = req.url
+  log.error err:err
+
+  res.status err.status
   res.render 'errors/error',
     message: err.message
     error: {}

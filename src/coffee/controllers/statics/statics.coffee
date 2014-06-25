@@ -9,8 +9,7 @@ StaticController.get =
     res.render 'users/static/index'
 
   landing: (req, res)->
-    res.render 'users/static/landing',
-      landing: true
+    res.render 'users/static/landing', landing: true
 
   remont: (req, res)->
     res.render 'users/static/remont'
@@ -26,6 +25,12 @@ StaticController.get =
 
   login: (req, res)->
     res.render 'users/static/login'
+
+#  gena: (req, res, next)->
+#    admin = new User login: 'admin', password: '12345'
+#    admin.save (err, info)->
+#      return next err if err
+#      res.redirect '/'
 
 
 StaticController.post =

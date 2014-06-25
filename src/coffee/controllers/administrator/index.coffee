@@ -20,6 +20,7 @@ router.route '/posts/:id'
   .put AdminController.Posts.update
   .delete AdminController.Posts.delete
 
-
+router.get '/logs', AdminController.Logs.show
+router.get '/logs/subscribe', AdminController.Logs.subscribe
 
 module.exports = router
