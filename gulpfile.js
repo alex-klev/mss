@@ -59,4 +59,5 @@ gulp.task('watch', function() {
   gulp.watch(paths.publicjs, ['publicjs']);
 });
 
-gulp.task('build', ['coffee', 'less', 'publicjs', 'adminjs']);
+gulp.task('build',  ['coffee', 'less', 'publicjs', 'adminjs']);
+gulp.task('public', ['less', 'publicjs', 'adminjs']);
