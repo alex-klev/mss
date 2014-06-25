@@ -1,6 +1,8 @@
 var gulp       = require('gulp');
 var sourcemaps = require('gulp-sourcemaps');
 var coffee     = require('gulp-coffee');
+var uglify     = require('gulp-uglify');
+var concat     = require('gulp-concat');
 var gutil      = require('gulp-util');
 var less       = require('gulp-less');
 var path       = require('path');
@@ -11,10 +13,13 @@ var paths = {
     watch :   ['./src/less/**/*.less'        ],
     src   :   ['./src/less/*.less'           ]
   },
-  publicjs  : ['./src/coffee-cli/**/*.coffee']
+  coffeecli  : {
+    pub: ['./src/coffee-cli/*.coffee'],
+    a  : ['./src/coffee-cli/a/*.coffee']
+  }
 };
 
-gulp.task('default', ['coffee', 'less', 'publicjs', 'watch']);
+gulp.task('default', ['coffee', 'less', 'publicjs', 'adminjs', 'watch']);
 
 gulp.task('coffee', function() {
   return gulp.src(paths.coffee)
@@ -29,11 +34,23 @@ gulp.task('less', function () {
 });
 
 gulp.task('publicjs', function() {
-  return gulp.src(paths.publicjs)
+  return gulp.src(paths.coffeecli.pub)
     .pipe(sourcemaps.init())
     .pipe(coffee({bare: false}).on('error', gutil.log))
     .pipe(sourcemaps.write())
+    .pipe(uglify())
+    .pipe(concat('script.min.js'))
     .pipe(gulp.dest('./public/js/'))
+});
+
+gulp.task('adminjs', function() {
+  return gulp.src(paths.coffeecli.a)
+    .pipe(sourcemaps.init())
+    .pipe(coffee({bare: false}).on('error', gutil.log))
+    .pipe(sourcemaps.write())
+    .pipe(uglify())
+    .pipe(concat('script.min.js'))
+    .pipe(gulp.dest('./public/js/a/'))
 });
 
 gulp.task('watch', function() {
@@ -42,4 +59,4 @@ gulp.task('watch', function() {
   gulp.watch(paths.publicjs, ['publicjs']);
 });
 
-gulp.task('build', ['coffee', 'less', 'publicjs']);
+gulp.task('build', ['coffee', 'less', 'publicjs', 'adminjs']);

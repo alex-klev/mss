@@ -28,8 +28,10 @@
     "gulp": "latest",
     "gulp-changed": "latest",
     "gulp-coffee": "latest",
+    "gulp-concat": "latest",
     "gulp-less": "latest",
     "gulp-sourcemaps": "latest",
+    "gulp-uglify": "latest",
     "gulp-util": "latest"
   }
 }
