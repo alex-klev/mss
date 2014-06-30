@@ -8,11 +8,12 @@ block content
           h1
             a(href='/posts/post/' + 'chpu-string_' + post['_id'] + '/')= post.title
           .content!= post.html
-    .page-paginator
-      ul.paginator
-        li.active: a 1
-        li: a(href='/posts/page2/') 2
-        li: a(href='/posts/page3/') 3
+    if posts.length > 5
+      .page-paginator
+        ul.paginator
+          li.active: a 1
+          li: a(href='/posts/page2/') 2
+          li: a(href='/posts/page3/') 3
 
   else
     h3 Нет статей
