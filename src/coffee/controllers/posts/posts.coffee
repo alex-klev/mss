@@ -12,11 +12,22 @@ PostsController.get =
     page = req.params.page or 0
     page = parseInt page, 10
 
-    Posts.find {}, null, {skip: page, limit: 5}, (err, posts)->
-      return next err if err
-      return next error404 if !posts.length
+    promise = Posts.find({}, null, {skip: page, limit: 5}).exec()
+
+    posts = null
+    promise.then((_posts)->
+      return next error404 if !_posts.length
+      posts = _posts
+      return Posts.count().exec()
+    )
+    .then((count)->
       res.render 'users/posts',
         posts: posts
+        count: count
+    )
+    .then(null, (err)->
+      return next err if err
+    )
 
   showId: (req, res, next)->
     res.render 'users/post',
