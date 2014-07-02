@@ -9,25 +9,24 @@ error404.status = 404
 PostsController.get =
 
   showIndex: (req, res, next)->
-    page = req.params.page or 0
-    page = parseInt page, 10
-
-    promise = Posts.find({}, null, {skip: page, limit: 5}).exec()
+    page = parseInt(req.params.page or 1)
+    return next() if page < 1
+    skip = 5 * (page - 1)
 
     posts = null
-    promise.then((_posts)->
-      return next error404 if !_posts.length
+    Posts.find {}, null, {skip: skip, limit: 5}
+    .exec()
+    .then (_posts)->
+      throw error404 if !_posts.length
       posts = _posts
       return Posts.count().exec()
-    )
-    .then((count)->
+    .then (count)->
       res.render 'users/posts',
         posts: posts
-        count: count
-    )
-    .then(null, (err)->
+        pages: Math.ceil count / 5
+        page : page
+    .then null, (err)->
       return next err if err
-    )
 
   showId: (req, res, next)->
     res.render 'users/post',
