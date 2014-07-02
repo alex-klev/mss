@@ -8,13 +8,14 @@ block content
           h1
             a(href='/posts/post/' + 'chpu-string_' + post['_id'] + '/')= post.title
           .content!= post.html
-    if count > 5
-      - pages = Math.ceil(count % 5)
+    if pages > 1
       .page-paginator
         ul.paginator
-          li.active: a 1
-          - for (var x = 1; x < pages; x++)
-            li: a(href='/posts/page#{x+1}/')= x+1
+          - for (var x = 1; x < pages+1; x++)
+            if page === x
+              li.active: a= x
+            else
+              li: a(href='/posts/page#{x}/')= x
 
   else
     h3 Нет статей
