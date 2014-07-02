@@ -1,14 +1,20 @@
 extends ./layout
 
 block content
-  if posts && posts.length
-    .posts
-      each post in posts
-        .post
-          h1
-            a(href='/posts/post/' + 'chpu-string_' + post['_id'] + '/')= post.title
-          .content!= post.html
-    if pages > 1
+  .content
+    include ./includes/h1
+
+    if posts && posts.length
+      .posts
+        each post in posts
+          .post
+            h1
+              a(href='/posts/post/' + 'chpu-string_' + post['_id'] + '/')= post.title
+            .content!= post.html
+    else
+      h3 Нет статей
+  if pages > 1
+    .paginator-wrapper
       .page-paginator
         ul.paginator
           - for (var x = 1; x < pages+1; x++)
@@ -16,6 +22,3 @@ block content
               li.active: a= x
             else
               li: a(href='/posts/page#{x}/')= x
-
-  else
-    h3 Нет статей
