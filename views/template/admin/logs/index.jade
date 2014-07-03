@@ -1,0 +1,41 @@
+extends ../layout
+
+block content
+  h3 Err log
+  div
+    pre#errlog
+      ul
+        each log in logs
+          - log.err  = log.err || {}
+          - log.err.status = log.err.status || '???'
+          - log.err.url = log.err.url || '/???'
+          - log.err.msg = log.err.msg || '?????'
+          li #{log.timestamp} - #{log.err.status} : #{log.err.url} ->>> #{log.err.msg}
+
+  script.
+    var errlog;
+    function subscribe () {
+      $.ajax({
+        url: '/admin/logs/subscribe',
+        method: 'GET',
+        cache: false,
+        success: function(data) {
+          if (data.log) {
+            data.log.err  = data.log.err || {};
+            data.log.err.status = data.log.err.status || '???';
+            data.log.err.url = data.log.err.url || '/???';
+            data.log.err.msg = data.log.err.msg || '?????';
+            errlog.prepend('<li>' + data.log.timestamp + ' - ' + data.log.err.status + ' : ' + data.log.err.url + ' ->>> ' + data.log.err.msg + '</li>');
+          }
+          subscribe();
+        },
+        error: function(data, type) {
+          setTimeout(subscribe, 500);
+        }
+      });
+    }
+
+    $(function () {
+      errlog = $('#errlog > ul');
+      subscribe();
+    });
