@@ -3,7 +3,7 @@ Posts    = mongoose.model 'Posts'
 
 PostsController = {}
 
-error404 = new Error 'not found'
+error404 = new Error 'Not Found'
 error404.status = 404
 
 PostsController.get =
