@@ -3,14 +3,23 @@ extends ../layout
 block content
   h3 Err log
   div
-    pre#errlog
-      ul
+    #errlog
+      ul.list-group
         each log in logs
           - log.err  = log.err || {}
           - log.err.status = log.err.status || '???'
           - log.err.url = log.err.url || '/???'
           - log.err.msg = log.err.msg || '?????'
-          li #{log.timestamp} - #{log.err.status} : #{log.err.url} ->>> #{log.err.msg}
+          li.list-group-item
+            if log.err.status === 500
+              a(href=log['_id']): span.label.label-danger= log.err.status
+            else if log.err.status === 401
+              a(href=log['_id']): span.label.label-warning= log.err.status
+            else
+              a(href=log['_id']): span.label.label-primary= log.err.status
+            span.label.label-info= new Date(log.timestamp).toTimeString()
+            span.label.label-default= log.err.url
+            span.label.label-msg= log.err.msg
 
   script.
     var errlog;
@@ -25,7 +34,21 @@ block content
             data.log.err.status = data.log.err.status || '???';
             data.log.err.url = data.log.err.url || '/???';
             data.log.err.msg = data.log.err.msg || '?????';
-            errlog.prepend('<li>' + data.log.timestamp + ' - ' + data.log.err.status + ' : ' + data.log.err.url + ' ->>> ' + data.log.err.msg + '</li>');
+
+            var evnt = '<li class="list-group-item">';
+            if(data.log.err.status === 500) {
+              evnt += '<a href="' + data.log['_id'] + '"><span class="label label-danger">' + data.log.err.status + '</span></a>';
+            } else if(data.log.err.status === 401) {
+              evnt += '<a href="' + data.log['_id'] + '"><span class="label label-warning">' + data.log.err.status + '</span></a>';
+            } else {
+              evnt += '<a href="' + data.log['_id'] + '"><span class="label label-primary">' + data.log.err.status + '</span></a>';
+            }
+            evnt += '<span class="label label-info">' + new Date(data.log.timestamp).toTimeString() + '</span>';
+            evnt += '<span class="label label-default">' + data.log.err.url + '</span>';
+            evnt += '<span class="label label-msg">' + data.log.err.msg + '</span>';
+            evnt += '</li>';
+
+            errlog.prepend(evnt);
           }
           subscribe();
         },
