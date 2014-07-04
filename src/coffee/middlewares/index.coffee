@@ -29,6 +29,7 @@ module.exports = (app)->
     return next()
 
   app.use (req, res, next)->
+    return res.redirect 301, req.url + '/' if (req.method is 'GET') and (Object.getOwnPropertyNames(req.query).length is 0) and (/\/$/.test(req.url) is false)
     if (req.url is '/') or /(^\/landing)/.test(req.url)
       app.set 'activeMenu', '/'
       return next()
