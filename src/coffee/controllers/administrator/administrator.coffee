@@ -36,7 +36,14 @@ AdminController.Posts =
 
 AdminController.Logs =
   show: (req, res, next)->
-    options = from: new Date - 24 * 60 * 60 * 1000, until: new Date, limit: 20, start: 0, order: 'desc', fields: ['message', 'err', 'url', 'timestamp']
+    options =
+      from: new Date - 7 * 24 * 60 * 60 * 1000
+      until: new Date
+      limit: 20
+      start: 0
+      order: 'desc'
+      includeIds: true
+      fields: ['message', 'err', 'url', 'timestamp']
     log.query.error options, (err, logs)->
       return next err if err
       res.render 'admin/logs', logs: logs.mongodb
