@@ -9,7 +9,7 @@ block content
         each post in posts
           .post
             h1
-              a(href='/posts/post/' + 'chpu-string_' + post['_id'] + '/')= post.title
+              a(href='/posts/post/chpu-string_#{post["_id"]}/')= post.title
             .content!= post.html
     else
       h3 Нет статей
