@@ -5790,3 +5790,16 @@ button.close {
 .toolbar-container {
   border-bottom: 1px solid #ccc;
 }
+#errlog .list-group li.list-group-item {
+  padding: 2px 0;
+  border: 0;
+  overflow: hidden;
+}
+#errlog .list-group li.list-group-item .label-info {
+  margin-left: 5px;
+}
+#errlog .list-group li.list-group-item .label-msg {
+  color: black;
+  overflow: hidden;
+  white-space: nowrap;
+}

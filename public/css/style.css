@@ -5651,6 +5651,8 @@ button.close {
 .main-wrapper .main-container .content-wrapper .content .header-content .main-info:after,
 .main-wrapper .main-container .content-wrapper .content .header-content .description:before,
 .main-wrapper .main-container .content-wrapper .content .header-content .description:after,
+.main-wrapper .main-container .content-wrapper .paginator-wrapper:before,
+.main-wrapper .main-container .content-wrapper .paginator-wrapper:after,
 .footer-wrapper .footer-container:before,
 .footer-wrapper .footer-container:after {
   content: " ";
@@ -5685,6 +5687,7 @@ button.close {
 .main-wrapper .main-container .content-wrapper .content .header-content:after,
 .main-wrapper .main-container .content-wrapper .content .header-content .main-info:after,
 .main-wrapper .main-container .content-wrapper .content .header-content .description:after,
+.main-wrapper .main-container .content-wrapper .paginator-wrapper:after,
 .footer-wrapper .footer-container:after {
   clear: both;
 }
@@ -6484,6 +6487,12 @@ fieldset[disabled] .login-wrapper .login-form .login-group .login-input-offset .
 .l-pricing .pricing-container .pricing-description p {
   margin: 0px;
 }
+.posts {
+  min-height: 450px;
+}
+.posts .post {
+  margin-bottom: 20px;
+}
 .main-wrapper {
   margin-left: -15px;
   margin-right: -15px;
@@ -6499,7 +6508,7 @@ fieldset[disabled] .login-wrapper .login-form .login-group .login-input-offset .
   padding-left: 15px;
   padding-right: 15px;
   background-color: #ffffff;
-  min-height: 500px;
+  min-height: 625px;
 }
 @media (min-width: 768px) {
   .main-wrapper .main-container {
@@ -6646,6 +6655,117 @@ fieldset[disabled] .login-wrapper .login-form .login-group .login-input-offset .
     float: left;
     width: 100%;
   }
+}
+.main-wrapper .main-container .content-wrapper .paginator-wrapper {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 768px) {
+  .main-wrapper .main-container .content-wrapper .paginator-wrapper {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .main-wrapper .main-container .content-wrapper .paginator-wrapper {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .main-wrapper .main-container .content-wrapper .paginator-wrapper {
+    width: 1170px;
+  }
+}
+.main-wrapper .main-container .content-wrapper .paginator-wrapper > .navbar-header,
+.main-wrapper .main-container .content-wrapper .paginator-wrapper > .navbar-collapse {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+@media (min-width: 768px) {
+  .main-wrapper .main-container .content-wrapper .paginator-wrapper > .navbar-header,
+  .main-wrapper .main-container .content-wrapper .paginator-wrapper > .navbar-collapse {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+.main-wrapper .main-container .content-wrapper .paginator-wrapper .page-paginator .paginator {
+  display: inline-block;
+  padding-left: 0;
+  margin: 17px 0;
+  border-radius: 0;
+}
+.main-wrapper .main-container .content-wrapper .paginator-wrapper .page-paginator .paginator > li {
+  display: inline;
+}
+.main-wrapper .main-container .content-wrapper .paginator-wrapper .page-paginator .paginator > li > a,
+.main-wrapper .main-container .content-wrapper .paginator-wrapper .page-paginator .paginator > li > span {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  line-height: 1.42857143;
+  text-decoration: none;
+  color: #29c5e6;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  margin-left: -1px;
+}
+.main-wrapper .main-container .content-wrapper .paginator-wrapper .page-paginator .paginator > li:first-child > a,
+.main-wrapper .main-container .content-wrapper .paginator-wrapper .page-paginator .paginator > li:first-child > span {
+  margin-left: 0;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+.main-wrapper .main-container .content-wrapper .paginator-wrapper .page-paginator .paginator > li:last-child > a,
+.main-wrapper .main-container .content-wrapper .paginator-wrapper .page-paginator .paginator > li:last-child > span {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+.main-wrapper .main-container .content-wrapper .paginator-wrapper .page-paginator .paginator > li > a:hover,
+.main-wrapper .main-container .content-wrapper .paginator-wrapper .page-paginator .paginator > li > span:hover,
+.main-wrapper .main-container .content-wrapper .paginator-wrapper .page-paginator .paginator > li > a:focus,
+.main-wrapper .main-container .content-wrapper .paginator-wrapper .page-paginator .paginator > li > span:focus {
+  color: #1493ae;
+  background-color: #eeeeee;
+  border-color: #dddddd;
+}
+.main-wrapper .main-container .content-wrapper .paginator-wrapper .page-paginator .paginator > .active > a,
+.main-wrapper .main-container .content-wrapper .paginator-wrapper .page-paginator .paginator > .active > span,
+.main-wrapper .main-container .content-wrapper .paginator-wrapper .page-paginator .paginator > .active > a:hover,
+.main-wrapper .main-container .content-wrapper .paginator-wrapper .page-paginator .paginator > .active > span:hover,
+.main-wrapper .main-container .content-wrapper .paginator-wrapper .page-paginator .paginator > .active > a:focus,
+.main-wrapper .main-container .content-wrapper .paginator-wrapper .page-paginator .paginator > .active > span:focus {
+  z-index: 2;
+  color: #ffffff;
+  background-color: #29c5e6;
+  border-color: #29c5e6;
+  cursor: default;
+}
+.main-wrapper .main-container .content-wrapper .paginator-wrapper .page-paginator .paginator > .disabled > span,
+.main-wrapper .main-container .content-wrapper .paginator-wrapper .page-paginator .paginator > .disabled > span:hover,
+.main-wrapper .main-container .content-wrapper .paginator-wrapper .page-paginator .paginator > .disabled > span:focus,
+.main-wrapper .main-container .content-wrapper .paginator-wrapper .page-paginator .paginator > .disabled > a,
+.main-wrapper .main-container .content-wrapper .paginator-wrapper .page-paginator .paginator > .disabled > a:hover,
+.main-wrapper .main-container .content-wrapper .paginator-wrapper .page-paginator .paginator > .disabled > a:focus {
+  color: #999999;
+  background-color: #ffffff;
+  border-color: #dddddd;
+  cursor: not-allowed;
+}
+.main-wrapper .main-container .content-wrapper .paginator-wrapper .page-paginator .paginator > li > a,
+.main-wrapper .main-container .content-wrapper .paginator-wrapper .page-paginator .paginator > li > span {
+  padding: 5px 10px;
+  font-size: 11px;
+}
+.main-wrapper .main-container .content-wrapper .paginator-wrapper .page-paginator .paginator > li:first-child > a,
+.main-wrapper .main-container .content-wrapper .paginator-wrapper .page-paginator .paginator > li:first-child > span {
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+}
+.main-wrapper .main-container .content-wrapper .paginator-wrapper .page-paginator .paginator > li:last-child > a,
+.main-wrapper .main-container .content-wrapper .paginator-wrapper .page-paginator .paginator > li:last-child > span {
+  border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
 }
 .section-nav {
   text-align: center;
