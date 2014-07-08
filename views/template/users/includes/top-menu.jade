@@ -3,14 +3,16 @@
     nav.navi
       .navi-collapse
         ul.menu-top
-          if settings.activeMenu === '/'
-            each menu in settings.menu
-              li(class=(menu.href === '/') ? 'menu-active' : '')
-                a(href=menu.href)= menu.title
-          else
-            each menu in settings.menu
-              li(class=(new RegExp('^\/' + settings.activeMenu, 'gi').test(menu.href)) ? 'menu-active' : '')
-                a(href=menu.href)= menu.title
+          //if settings.activeMenu === '/'
+          //  each menu in settings.menu
+          //    li(class=(menu.href === '/') ? 'menu-active' : '')
+          //      a(href=menu.href)= menu.title
+          //else
+          li(class='menu-active')
+            a(href='/') DDDDD
+            //each menu in settings.menu
+            //  li(class=(new RegExp('^\/' + settings.activeMenu, 'gi').test(menu.href)) ? 'menu-active' : '')
+            //    a(href=menu.href)= menu.title
 
           li.login(class=(settings.activeMenu === 'login') ? 'menu-active' : '')
             a(href='/login/') Вход

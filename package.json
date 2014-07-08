@@ -11,18 +11,16 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "latest",
-    "connect-mongo": "latest",
     "cookie-parser": "latest",
     "express": "latest",
     "express-session": "latest",
     "jade": "latest",
     "method-override": "latest",
-    "mongoose": "latest",
     "morgan": "latest",
+    "mssql": "^1.0.2",
     "nconf": "latest",
     "serve-favicon": "latest",
-    "winston": "latest",
-    "winston-mongodb": "latest"
+    "winston": "latest"
   },
   "devDependencies": {
     "gulp": "latest",

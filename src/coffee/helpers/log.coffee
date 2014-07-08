@@ -12,12 +12,12 @@ getLogger = (module)->
         colorize   : true
         label      : path
         level      : 'info'
-      new winston.transports.MongoDB
-        cappedSize : 10000000
-        capped     : true
-        collection : 'infolog'
-        db         : 'mss'
-        level      : 'info'
+#      new winston.transports.MongoDB
+#        cappedSize : 10000000
+#        capped     : true
+#        collection : 'infolog'
+#        db         : 'mss'
+#        level      : 'info'
     ]
 
   error = new winston.Logger
@@ -27,12 +27,12 @@ getLogger = (module)->
         colorize   : true
         label      : path
         level      : 'error'
-      new winston.transports.MongoDB
-        cappedSize : 10000000
-        capped     : true
-        collection : 'errlog'
-        db         : 'mss'
-        level      : 'error'
+#      new winston.transports.MongoDB
+#        cappedSize : 10000000
+#        capped     : true
+#        collection : 'errlog'
+#        db         : 'mss'
+#        level      : 'error'
     ]
 
   error.stream(start: -1).on 'log', (log)->

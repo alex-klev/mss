@@ -1,11 +1,11 @@
-administrator    = require './administrator'
+#administrator    = require './administrator'
 statics          = require './statics'
-posts            = require './posts'
+#posts            = require './posts'
 
 
 module.exports = (app)->
   app.use '/', statics
-  app.use '/posts', posts
+#  app.use '/posts', posts
 
-  app.use '/admin', administrator
+#  app.use '/admin', administrator
   return

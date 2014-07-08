@@ -1,36 +1,34 @@
 middleware = require './middlewares'
-mongoose   = require 'mongoose'
 favicon    = require 'serve-favicon'
 express    = require 'express'
 config     = require './config'
 logger     = require 'morgan'
 path       = require 'path'
 log        = require('./helpers/log')(module)
+sql        = require 'mssql'
 fs         = require 'fs'
 
 app = express()
 
-connect = ()->
-  options = {server: {socketOptions: {keepAlive: 1}}}
-  mongoose.connect 'mongodb://localhost/mss', options
-connect()
-mongoose.connection.on 'error', (err)-> log.error err
-mongoose.connection.on 'disconnected', -> connect()
+config =
+  user: 'sa'
+  password: '12345'
+  server: 'KOSTYLEVAV'
+  options:
+    instanceName: 'MYSQLEXPRESS'
+  database: 'ReportKPP'
 
-# Bootstrap models
-modelsPath = path.join(__dirname, './models')
-fs.readdirSync(modelsPath).forEach (file)->
-  if config.get 'COFFEE'
-    require(modelsPath + '/' + file) if ~file.indexOf '.coffee'
-  else
-    require(modelsPath + '/' + file) if ~file.indexOf '.js'
+sql.connect config, (err)->
+  if err
+    log error err
+  log.info 'SQL Connected'
 
 app.set 'views', path.join(__dirname, './../../views/template')
 app.set 'view engine', 'jade'
 app.use favicon(path.join(__dirname + './../../public/images/favicon.png'))
 app.use logger('dev')
 
-middleware(app);
+middleware(app)
 
 # Bootstrap routes
 require('./controllers') app

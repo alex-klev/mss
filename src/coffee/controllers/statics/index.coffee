@@ -11,6 +11,6 @@ router.get '/gallery', StaticsController.get.gallery
 router.get '/price', StaticsController.get.price
 router.route '/login'
   .get StaticsController.get.login
-  .post StaticsController.post.login
+#  .post StaticsController.post.login
 
 module.exports = router
